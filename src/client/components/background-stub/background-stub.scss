@@ -1,0 +1,7 @@
+@import '../../css/vars';
+@import '../../css/colors';
+@import '../../css/mixins/fixed-background';
+
+.background-stub {
+    @include fixed-background;
+}

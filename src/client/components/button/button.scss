@@ -1,0 +1,36 @@
+@import '../../css/vars';
+@import '../../css/colors';
+@import '../../css/mixins/media';
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    border: 0;
+    border-radius: 3px;
+    outline: none;
+    background-color: $color-primary;
+    box-shadow: 0 10px 20px rgba($color-primary, 0.4);
+
+    color: $color-white;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    user-select: none;
+
+    transition: background-color ease $dur;
+
+    padding: 0 45px;
+    @include from-sm-width {
+        padding: 0 55px;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        cursor: pointer;
+        background-color: darken($color-primary, 10%);
+        transition-duration: $dur-fast;
+    }
+}

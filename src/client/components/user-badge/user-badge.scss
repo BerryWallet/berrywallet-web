@@ -1,0 +1,31 @@
+@import '../../css/vars';
+@import '../../css/colors';
+
+.user-badge {
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    grid-template-rows: 22px 1fr;
+    grid-column-gap: 12px;
+    // background: $color-white;
+    // padding: 20px;
+
+    &__avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 2px;
+        grid-row-start: 1;
+        grid-row-end: span 2;
+    }
+
+    &__name {
+        color: $color-text-dark;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &__link {
+        color: $color-text-light;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}
