@@ -9,5 +9,7 @@
         "start": "node ./dist/server/index.js"
     },
     "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {
+        "gulp": "^3.9.1"
+    }
 }

@@ -1,8 +1,6 @@
 import gulp from 'gulp';
 import path from 'path';
 
-import * as PotExtractor from './pot-extractor';
-
 const PATH = {
     SOURCE: path.join(__dirname, './src'),
     TARGET: path.join(__dirname, './dist'),
@@ -20,10 +18,6 @@ gulp.task('locales', copyTask({
     destinations: ['./dist/locales'],
     // pattern: '/*',
 }));
-
-gulp.task('pot', () => {
-    PotExtractor.extract();
-});
 
 gulp.task('build', ['copy', 'locales']);
 
