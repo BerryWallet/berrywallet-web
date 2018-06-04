@@ -1,0 +1,10 @@
+app:
+  host: berrywallet.io
+  port: 80
+  secure: true
+
+  gtmKey: 'GTM-NWXJK3K'
+  flags: []
+
+  # Application version
+  version: 0.0.1

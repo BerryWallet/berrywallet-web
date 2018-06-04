@@ -1,0 +1,5 @@
+User-agent: *
+Allow: *
+
+Host: https://berrywallet.io/
+Sitemap: https://berrywallet.io/sitemap.xml

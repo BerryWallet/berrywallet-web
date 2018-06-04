@@ -10,7 +10,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "pretty": true,
-        "outDir": "dist",
+        "outDir": "dist/server",
         "baseUrl": "./src",
         "lib": [
             "es5",
@@ -27,5 +27,8 @@
             "src/definitions",
             "node_modules/@types"
         ]
-    }
+    },
+    "exclude": [
+        "./src/client/*"
+    ]
 }
