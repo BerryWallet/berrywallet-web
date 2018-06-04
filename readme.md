@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center" style="font-size: 24px;">Website of BERRYWALLET</h3>
+  <h3 align="center">Website of BERRYWALLET</h3>
 
   <p align="center">
     NodeJS app with React for server- and client- side rendering.
@@ -39,3 +39,18 @@ In other terminal you need to build server and run it
 ```bash
 $ npm run build:server && npm start
 ```
+
+
+<hr />
+
+<p align="center">
+    <i>Contributors: </i>
+    <br />
+    <i>
+        <a href="https://github.com/Eropi4">Yehor Melnykov</a>
+        ·
+        <a href="https://github.com/m-tymchyk">Maksym Tymchyk</a>
+        ·
+        <a href="https://github.com/IOuser">Igor Emets</a>
+    </i>
+</p>
