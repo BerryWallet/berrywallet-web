@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const noop = function () {
 };
@@ -10,6 +11,11 @@ const isBuild = process.env.BUILD === 'true';
 
 const PATH_SOURCE = path.resolve(__dirname, './src');
 const PATH_DIST = path.resolve(__dirname, './dist');
+
+const extractSass = new ExtractTextPlugin({
+    filename: "css/[name].css",
+    disable: isBuild
+});
 
 function getJSLoader() {
     return {
@@ -43,6 +49,21 @@ function getTSLoader() {
     };
 }
 
+function getScssLoader() {
+    return {
+        test: /\.scss$/,
+        use: extractSass.extract({
+            use: [{
+                loader: "css-loader"
+            }, {
+                loader: "sass-loader"
+            }],
+            // use style-loader in development
+            fallback: "style-loader"
+        })
+    };
+}
+
 
 function getDefinePlugin(isBrowser = false) {
     return new webpack.DefinePlugin({
@@ -67,7 +88,8 @@ const baseConfig = {
     module: {
         rules: [
             getJSLoader(),
-            getTSLoader()
+            getTSLoader(),
+            getScssLoader()
         ]
     },
 
@@ -94,28 +116,36 @@ const baseConfig = {
 
 const clientConfig = {
     ...baseConfig,
-    entry: './src/client/index.tsx',
+
+    entry: {
+        main: './src/client/index.tsx'
+    },
     output: {
         path: path.resolve(PATH_DIST, 'public'),
-        filename: 'main.bundle.js',
+        filename: '[name].bundle.js',
         publicPath: '/'
     },
     plugins: [
-        getDefinePlugin(true)
+        getDefinePlugin(true),
+        extractSass
     ]
 };
 
 const serverConfig = {
     ...baseConfig,
-    entry: './src/server/index.js',
+    entry: {
+        server: './src/server/index.ts',
+        critical: './src/server/critical.ts'
+    },
     target: 'node',
     output: {
         path: path.resolve(PATH_DIST),
-        filename: 'server.js',
+        filename: '[name].js',
         publicPath: '/'
     },
     plugins: [
-        getDefinePlugin(false)
+        getDefinePlugin(false),
+        extractSass
     ],
 };
 

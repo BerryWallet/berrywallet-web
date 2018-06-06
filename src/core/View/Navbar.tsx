@@ -22,7 +22,7 @@ export function Navbar(): JSX.Element {
     return (
         <ul>
             <li>
-                <NavLink to="/" activeStyle={{fontWeight: 'bold'}}>HOME</NavLink>
+                <NavLink to="/" exact activeStyle={{fontWeight: 'bold'}}>HOME</NavLink>
             </li>
 
             {languages.map(({name, param}) => (

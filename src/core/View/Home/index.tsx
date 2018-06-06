@@ -1,6 +1,5 @@
 import React from 'react';
-import {Grid} from './Grid';
-import {IGithubItem} from '../api';
+import './home.scss';
 
 interface IHomeProps {
 }
@@ -8,7 +7,7 @@ interface IHomeProps {
 export class Home extends React.Component<IHomeProps> {
     public render(): JSX.Element {
         return (
-            <div>Select a Language</div>
+            <div className="home">Select a Language</div>
         );
     }
 }
