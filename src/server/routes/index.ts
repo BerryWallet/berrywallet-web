@@ -1,0 +1,1 @@
+export {reactRenderRoute} from './react-render-route';

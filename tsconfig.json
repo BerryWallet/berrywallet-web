@@ -1,17 +1,24 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "sourceMap": true,
-        "moduleResolution": "node",
         "jsx": "react",
-        "target": "es6",
-        "module": "commonjs",
-        "downlevelIteration": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        "target": "es5",
+        "module": "es2015",
+        "moduleResolution": "node",
         "pretty": true,
-        "outDir": "dist/server",
-        "baseUrl": "./src",
+        "strict": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false,
+        "downlevelIteration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "outDir": "ts-build",
+        "baseUrl": "./",
+        "rootDirs": [
+            "./src"
+        ],
         "lib": [
             "es5",
             "es6",
@@ -28,7 +35,7 @@
             "node_modules/@types"
         ]
     },
-    "exclude": [
-        "./src/client/*"
+    "include": [
+        "./src/**/*"
     ]
 }

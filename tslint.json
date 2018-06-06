@@ -34,7 +34,7 @@
             "check-constructor"
         ],
         "member-ordering": [
-            true,
+            false,
             {
                 "order": [
                     "public-static-field",
@@ -99,7 +99,7 @@
         "space-before-function-paren": [true, { "anonymous": "never", "named": "never" }],
         "triple-equals": [true, "allow-null-check"],
         "typedef": [
-            true,
+            false,
             "call-signature",
             "parameter",
             "arrow-parameter",
@@ -125,13 +125,13 @@
         ],
         "use-isnan": true,
         "variable-name": [
-            true,
+            false,
             "ban-keywords",
             "check-format",
             "allow-leading-underscore"
         ],
         "whitespace": [
-            true,
+            false,
             "check-branch",
             "check-decl",
             "check-operator",
@@ -151,7 +151,7 @@
         "no-disable-auto-sanitization": true,
         "no-document-domain": true,
         "no-duplicate-case": true,
-        "no-empty-line-after-opening-brace": true,
+        "no-empty-line-after-opening-brace": false,
         "no-exec-script": true,
         "no-function-constructor-with-string-args": true,
         "no-http-string": true,
@@ -169,21 +169,16 @@
         "no-unnecessary-field-initialization": true,
         "no-unnecessary-local-variable": true,
         "no-unnecessary-override": true,
-        "no-unnecessary-semicolons": true,
+        "no-unnecessary-semicolons": false,
         "no-with-statement": true,
         "prefer-array-literal": true,
         "promise-must-complete": true,
         "literal-spacing": [
-            true,
-            {
-                "array": ["never"],
-                "object": ["always"],
-                "import": ["always"]
-            }
+            false
         ],
         "max-params": [true, 6],
-        "jsx-alignment": true,
-        "jsx-curly-spacing": [true, "always"],
+        "jsx-alignment": false,
+        "jsx-curly-spacing": [false],
         "jsx-no-bind": true,
         "jsx-no-string-ref": true,
         "jsx-wrap-multiline": true

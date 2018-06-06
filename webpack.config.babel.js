@@ -22,6 +22,27 @@ function getJSLoader() {
     };
 }
 
+function getTSLoader() {
+    return {
+        test: /(\.tsx?)$/,
+        use: [
+            {
+                loader: 'awesome-typescript-loader',
+                options: {
+                    // silent: true,
+                    configFile: path.resolve(__dirname, 'tsconfig.json'),
+                    compilerOptions: {
+                        module: 'esnext',
+                        target: 'es5',
+                        noEmitHelpers: true,
+                        importHelpers: true
+                    }
+                }
+            },
+        ],
+    };
+}
+
 
 function getDefinePlugin(isBrowser = false) {
     return new webpack.DefinePlugin({
@@ -30,18 +51,23 @@ function getDefinePlugin(isBrowser = false) {
     });
 }
 
-
 const baseConfig = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
         modules: [
             PATH_SOURCE,
             path.resolve(__dirname, './node_modules')
-        ]
+        ],
+        alias: {
+            client: path.join(__dirname, 'src/client'),
+            server: path.join(__dirname, 'src/server'),
+            core: path.join(__dirname, 'src/core')
+        }
     },
     module: {
         rules: [
-            getJSLoader()
+            getJSLoader(),
+            getTSLoader()
         ]
     },
 
@@ -68,7 +94,7 @@ const baseConfig = {
 
 const clientConfig = {
     ...baseConfig,
-    entry: './src/client/index.jsx',
+    entry: './src/client/index.tsx',
     output: {
         path: path.resolve(PATH_DIST, 'public'),
         filename: 'main.bundle.js',
@@ -81,7 +107,7 @@ const clientConfig = {
 
 const serverConfig = {
     ...baseConfig,
-    entry: './src/server/index.jsx',
+    entry: './src/server/index.js',
     target: 'node',
     output: {
         path: path.resolve(PATH_DIST),
