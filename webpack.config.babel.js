@@ -54,7 +54,10 @@ function getScssLoader() {
         test: /\.scss$/,
         use: extractSass.extract({
             use: [{
-                loader: "css-loader"
+                loader: "css-loader",
+                options: {
+                    minimize: !isDev
+                }
             }, {
                 loader: "sass-loader"
             }],
@@ -67,7 +70,7 @@ function getScssLoader() {
 
 function getDefinePlugin(isBrowser = false) {
     return new webpack.DefinePlugin({
-        __NODE_ENV__: JSON.stringify(process.env.NODE_ENV),
+        __NODE_ENV__: JSON.stringify(process.env.NODE_ENV || 'development'),
         __isBrowser__: JSON.stringify(isBrowser)
     });
 }
@@ -127,6 +130,8 @@ const clientConfig = {
     },
     plugins: [
         getDefinePlugin(true),
+        new webpack.NamedModulesPlugin(),
+        isDev ? noop : new webpack.optimize.ModuleConcatenationPlugin(),
         extractSass
     ]
 };
@@ -145,6 +150,8 @@ const serverConfig = {
     },
     plugins: [
         getDefinePlugin(false),
+        new webpack.NamedModulesPlugin(),
+        isDev ? noop : new webpack.optimize.ModuleConcatenationPlugin(),
         extractSass
     ],
 };
