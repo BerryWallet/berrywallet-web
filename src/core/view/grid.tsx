@@ -1,6 +1,7 @@
 import React from 'react';
 import {RouteComponentProps, StaticContext} from 'react-router';
 import {IGithubItem} from '../api';
+import {MainLayout} from './';
 
 interface IGridContext extends StaticContext {
     name?: string;
@@ -88,21 +89,21 @@ export class Grid extends React.Component<IGridProps, IGridState> {
         const {repos = null, name = null, loading = false} = this.state;
 
         if (loading) {
-            return <p>LOADING</p>;
+            return <MainLayout>LOADING</MainLayout>;
         }
 
         if (!repos) {
-            return <div>No any items</div>;
+            return <MainLayout>No any items</MainLayout>;
         }
 
         return (
-            <div>
+            <MainLayout>
                 <h1>{this.props.match.params.id}</h1>
 
                 <ul style={{display: 'flex', flexWrap: 'wrap'}}>
                     {repos && repos.map(this.renderRepository)}
                 </ul>
-            </div>
+            </MainLayout>
         );
     }
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import {map} from 'lodash';
 import {Route, RouteComponentProps, Switch} from 'react-router-dom';
 
-import {NoMatch, Navbar} from './View';
 import {routes, IApplicationRoute} from './routes';
+import {NoMatch} from './view';
 
 interface IAppProps {
 }
@@ -30,15 +30,10 @@ export class App extends React.Component<IAppProps> {
 
     public render(): JSX.Element {
         return (
-            <div>
-                <Navbar/>
-
-                <Switch>
-                    {map(routes, this.resolveRoute)}
-                    <Route render={(props: RouteComponentProps<any>) => <NoMatch {...props} />}/>
-                </Switch>
-            </div>
-
+            <Switch>
+                {map(routes, this.resolveRoute)}
+                <Route render={(props: RouteComponentProps<any>) => <NoMatch {...props} />}/>
+            </Switch>
         );
     }
 }

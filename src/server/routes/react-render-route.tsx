@@ -1,10 +1,9 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import serialize from 'serialize-javascript';
 import {StaticRouter, matchPath, match} from 'react-router-dom';
 
 import {IApplicationRoute, routes} from '../../core/routes';
-import {App} from '../../core/App';
+import {App} from '../../core/app';
 import {MainTemplate} from './main-template';
 
 export const reactRenderRoute = (req, res, next) => {

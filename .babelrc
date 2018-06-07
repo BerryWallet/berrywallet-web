@@ -13,6 +13,7 @@
     ],
     "retainLines": true,
     "plugins": [
+        "inline-react-svg",
         "dynamic-import-node",
         "transform-decorators-legacy",
         "transform-class-properties"

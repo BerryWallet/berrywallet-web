@@ -9,7 +9,7 @@ body {
   font-size: 16px;
   line-height: $base-line-height;
   color: $color-text-dark;
-  background-color: $color-white;
+  // background-color: $color-background;
   min-height: 100vh;
 
   -webkit-user-drag: none;
@@ -20,6 +20,11 @@ body {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
+}
+
+.main-layout {
+  background: $color-background;
+  min-height: 100vh;
 }
 
 .link {

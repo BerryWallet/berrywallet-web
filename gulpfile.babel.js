@@ -13,13 +13,7 @@ gulp.task('copy', copyTask({
     // pattern: '/*',
 }));
 
-gulp.task('locales', copyTask({
-    source: './locales/',
-    destinations: ['./dist/locales'],
-    // pattern: '/*',
-}));
-
-gulp.task('build', ['copy', 'locales']);
+gulp.task('build', ['copy']);
 
 function copyTask(opts) {
     const {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {hydrate} from 'react-dom';
-import {App} from '../core/App';
+import {App} from '../core/app';
 import {BrowserRouter} from 'react-router-dom';
 
 hydrate(

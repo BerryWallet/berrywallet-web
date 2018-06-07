@@ -67,6 +67,23 @@ function getScssLoader() {
     };
 }
 
+function getSvgLoader() {
+    return {
+        test: /\.svg$/,
+        use: [
+            {
+                loader: "babel-loader"
+            },
+            {
+                loader: "react-svg-loader",
+                options: {
+                    jsx: true // true outputs JSX tags
+                }
+            }
+        ]
+    };
+}
+
 
 function getDefinePlugin(isBrowser = false) {
     return new webpack.DefinePlugin({
@@ -77,7 +94,7 @@ function getDefinePlugin(isBrowser = false) {
 
 const baseConfig = {
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+        extensions: [ ".svg", ".ts", ".tsx", ".js", ".jsx", ".json"],
         modules: [
             PATH_SOURCE,
             path.resolve(__dirname, './node_modules')
@@ -90,6 +107,7 @@ const baseConfig = {
     },
     module: {
         rules: [
+            getSvgLoader(),
             getJSLoader(),
             getTSLoader(),
             getScssLoader()

@@ -1,4 +1,4 @@
-import {Home, Grid} from './View';
+import {Home, Grid} from './view';
 import {fetchPopularRepos, IGithubItem} from './api';
 import {RouteProps, match} from 'react-router';
 

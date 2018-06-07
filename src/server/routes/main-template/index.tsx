@@ -20,6 +20,12 @@ const criticalCSS = fs.readFileSync(
 
 export class MainTemplate extends React.Component<IProps> {
     public render(): JSX.Element {
+
+        const criticalLocalCss = fs.readFileSync(
+            path.resolve('dist/css/critical.css'),
+            'utf-8'
+        );
+
         const {children, data = null, title = null, keywords = [], description} = this.props;
 
         const mainCssAttribute = {
@@ -47,7 +53,7 @@ export class MainTemplate extends React.Component<IProps> {
                 <meta name="description" content={description}/>
 
                 <link {...mainCssAttribute}/>
-                <style dangerouslySetInnerHTML={{__html: criticalCSS}}/>
+                <style dangerouslySetInnerHTML={{__html: criticalLocalCss}}/>
                 <script {...mainJsAttribute}/>
                 <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_DATA__=${serialize(data)};`}}
                         type="application/javascript"
