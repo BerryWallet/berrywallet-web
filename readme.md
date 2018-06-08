@@ -50,7 +50,5 @@ $ npm run build:server && npm start
         <a href="https://github.com/Eropi4">Yehor Melnykov</a>
         ·
         <a href="https://github.com/m-tymchyk">Maksym Tymchyk</a>
-        ·
-        <a href="https://github.com/IOuser">Igor Emets</a>
     </i>
 </p>
