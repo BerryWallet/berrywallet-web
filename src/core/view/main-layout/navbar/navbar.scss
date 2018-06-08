@@ -14,22 +14,24 @@
     left: 0;
     width: 50px;
     height: 100%;
-    box-shadow: 0 1px 1px rgba(#D8DDEF, 0.1);
+    box-shadow: 0 1px 1px rgba($color-navigation-shadow, 0.1);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
-    transition: all 0.2s;
+    transition: all 0.4s;
+    transition-delay: 0.6s;
 
     opacity: 1;
     visibility: visible;
-    color: #A0A4B8;
+    color: $color-text-main;
 
     &.-is-menu-open {
       color: white;
-      background: #333333;
+      background: $color-navigation-dark;
+      transition-delay: 0s;
     }
 
     &.-is-hide {
@@ -43,36 +45,103 @@
     &__item {
       display: block;
       margin-bottom: 24px;
+
+      & svg {
+        transition: all 0.4s;
+        fill: currentColor;
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
+}
 
-  &-overlay {
-    position: fixed;
-    z-index: 9;
-    top: 0;
-    right: 0;
-    bottom: 0;
+.navigation-modal {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  bottom: 0;
 
-    height: 100%;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  color: white;
+  background: $color-navigation-dark;
+
+  transition: width 0.8s cubic-bezier(.77, 0, .175, 1);
+  &.-is-open {
     width: 100vw;
+  }
+
+  &-logo {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    fill: white;
+    height: 9px;
+    width: 110px;
+  }
+
+  &-decoration {
+    position: absolute;
+    width: 90vw;
+    height: 90vw;
+    top: -5.6vw;
+    right: -30%;
+  }
+
+  &-wrapper {
     padding-left: 50px + 70px;
-    background: white;
+    display: flex;
+    width: 100vw;
+    height: 100%;
+  }
 
-    left: -100%;
+  &-content {
+    width: 100%;
+    height: 100%;
+  }
 
-    &-content {
-      display: flex;
-    }
+  &-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
   }
 }
 
 .menu {
+  transition: all 0.4s;
   display: block;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  &.-is-visible {
+    transition-delay: 0.3s;
+    opacity: 1;
+  }
+
   &-item {
+    transition: all 0.4s;
     display: block;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 1.41;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: white;
+    &:hover {
+      color: $color-primary;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -93,7 +162,7 @@
     width: 2px;
     position: absolute;
     border-radius: 3px;
-    background: #A0A4B8;
+    background: $color-text-main;
     top: 0;
     transform: rotate(0deg);
 
@@ -108,7 +177,7 @@
 
   .-is-menu-open & {
     &__line {
-      background: #FFFFFF;
+      background: white;
       &:first-child {
         transform: rotate(45deg);
         left: calc(50% - 1px);

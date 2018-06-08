@@ -2,14 +2,15 @@
 @import "vendor/font";
 @import "vendor/normalize";
 
-html {}
+html {
+}
 
 body {
   @include font;
   font-size: 16px;
-  line-height: $base-line-height;
   color: $color-text-dark;
-  // background-color: $color-background;
+  line-height: $base-line-height;
+  background-color: white;
   min-height: 100vh;
 
   -webkit-user-drag: none;
@@ -28,9 +29,10 @@ body {
 }
 
 .link {
-  color: $color-main;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
 }
+
+@import "vendor/text";

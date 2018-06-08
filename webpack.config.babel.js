@@ -59,7 +59,13 @@ function getScssLoader() {
                     minimize: !isDev
                 }
             }, {
-                loader: "sass-loader"
+                loader: "sass-loader",
+                options: {
+                    data: `@import "vendor/variables.scss";`,
+                    includePaths: [
+                        path.resolve(__dirname, './src/style')
+                    ]
+                }
             }],
             // use style-loader in development
             fallback: "style-loader"
@@ -92,17 +98,20 @@ function getDefinePlugin(isBrowser = false) {
     });
 }
 
+console.log(path.resolve(__dirname, 'src/style'));
+
 const baseConfig = {
     resolve: {
-        extensions: [ ".svg", ".ts", ".tsx", ".js", ".jsx", ".json"],
+        extensions: [".svg", ".ts", ".tsx", ".js", ".jsx", ".json"],
         modules: [
             PATH_SOURCE,
             path.resolve(__dirname, './node_modules')
         ],
         alias: {
-            client: path.join(__dirname, 'src/client'),
-            server: path.join(__dirname, 'src/server'),
-            core: path.join(__dirname, 'src/core')
+            Client: path.resolve(__dirname, 'src/client'),
+            Server: path.resolve(__dirname, 'src/server'),
+            Core: path.resolve(__dirname, 'src/core'),
+            Style: path.resolve(__dirname, 'src/style')
         }
     },
     module: {
@@ -113,7 +122,6 @@ const baseConfig = {
             getScssLoader()
         ]
     },
-
     devServer: {
         compress: true,
         historyApiFallback: true,

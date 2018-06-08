@@ -4,16 +4,8 @@ import {Navbar} from './navbar';
 export class MainLayout extends React.Component {
 
     public state = {
-        isNavbarHidden: true
+        isNavbarHidden: false
     };
-
-    public componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                isNavbarHidden: false
-            });
-        });
-    }
 
     public render(): JSX.Element {
 
