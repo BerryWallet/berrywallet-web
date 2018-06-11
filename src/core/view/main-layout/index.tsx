@@ -1,9 +1,11 @@
 import React from 'react';
 import cn from 'classnames';
-import {Navbar} from './navbar';
-import {IntroScreen} from '../home/intro-screen';
 import {Copywrite} from '../../ui';
 import {InlineLogo} from '../../svg';
+
+import {BackgroundLine} from './background-line';
+import {Navbar} from './navbar';
+import {IntroScreen} from '../home/intro-screen';
 
 export class MainLayout extends React.Component {
 
@@ -24,13 +26,14 @@ export class MainLayout extends React.Component {
         return (
             <main className={cn('main-layout', isOpenIntro && '-is-blocked-scroll')}>
                 <IntroScreen isOpen={isOpenIntro} onCloseIntro={this.closeIntro}/>
+                <BackgroundLine/>
 
                 <Navbar isHide={isOpenIntro}/>
                 <div className={cn('main-content')}>
                     <InlineLogo className="main-content__logo"/>
                     {this.props.children}
                     <div className="copywrite-wrapper">
-                        <Copywrite />
+                        <Copywrite/>
                     </div>
                 </div>
             </main>

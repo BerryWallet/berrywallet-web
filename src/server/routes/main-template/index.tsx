@@ -48,10 +48,11 @@ export class MainTemplate extends React.Component<IProps> {
                 <meta name="viewport"
                       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
                 <meta name="format-detection" content="telephone=no"/>
-                <title>{title || 'BERRYWALLET'}</title>
-                <meta name="keywords" content={keywords.join(', ')}/>
-                <meta name="description" content={description}/>
-
+                <title>{title || 'Berrywallet - Safest multi-currency virtual crypto wallet'}</title>
+                <meta name="keywords"
+                      content={keywords.join(', ')}/>
+                <meta name="description"
+                      content="Blockchain multi-wallet that keeps the perfect balance between simplicity and mastery"/>
                 <link {...mainCssAttribute}/>
                 <style dangerouslySetInnerHTML={{__html: criticalLocalCss}}/>
                 <script {...mainJsAttribute}/>
@@ -59,6 +60,8 @@ export class MainTemplate extends React.Component<IProps> {
                         type="application/javascript"
                 />
                 <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+                <link rel="chrome-webstore-item"
+                      href="https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn"/>
             </head>
             <body>
             <div id="app">{children}</div>

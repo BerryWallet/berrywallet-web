@@ -2,6 +2,7 @@ import React from 'react';
 import './home.scss';
 import {MainLayout} from '../';
 import {Container, ContainerSlide, Topic} from '../../ui';
+import {InstallButton} from './install-button';
 
 interface IHomeProps {
 }
@@ -17,6 +18,7 @@ export class Home extends React.Component<IHomeProps> {
                             subtitle={<span>
                                 Blockchain multi-wallet that keeps the perfect balance between simplicity and mastery
                             </span>}
+                            actionButtons={<InstallButton/>}
                         />
                     </ContainerSlide>
                 </Container>
@@ -39,9 +41,9 @@ export class Home extends React.Component<IHomeProps> {
                         <Topic
                             topicTitle="Forget About Inconvenient Wallet"
                             subtitle={<span>
-                                Berrywallet is a cross-platform cryptocurrency multi-wallet that allows you to
-                                store, manage and trade your cryptocurrencies conveniently without the need to
-                                switch between wallets or screens.
+                                Berrywallet is a cross-platform cryptocurrency multi-wallet that allows you to store,
+                                manage and trade your cryptocurrencies conveniently without the need to switch between
+                                wallets or screens.
                             </span>}
                         />
                     </ContainerSlide>
@@ -56,6 +58,7 @@ export class Home extends React.Component<IHomeProps> {
                                 on three crucial parts - client-centric security model, ease and flawless user
                                 experience.
                             </span>}
+                            actionButtons={<InstallButton/>}
                         />
                     </ContainerSlide>
                 </Container>

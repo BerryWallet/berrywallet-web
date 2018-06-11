@@ -51,6 +51,13 @@
         fill: currentColor;
       }
 
+      &:hover {
+        svg {
+          fill: $color-primary;
+          transform: scale(1.2);
+        }
+      }
+
       &:last-child {
         margin-bottom: 0;
       }

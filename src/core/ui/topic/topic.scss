@@ -16,6 +16,14 @@
     color: #A0A4B8;
   }
 
+  &__action-buttons {
+    position: absolute;
+    top: 100%;
+    margin-top: 40px;
+    left: 0;
+    width: 100%;
+  }
+
   &.-is-white &__title {
     color: white;
   }

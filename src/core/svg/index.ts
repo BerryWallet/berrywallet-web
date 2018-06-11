@@ -14,6 +14,7 @@ import Edge from './browser/edge.svg';
 
 import Oval from './oval.svg';
 import BerrywalletDummy from './berrywallet-dummy.svg';
+import ChromeColor from './chrome-color.svg';
 
 const Social = {
     Facebook,
@@ -37,5 +38,6 @@ export {
     Logo,
     InlineLogo,
     Oval,
-    BerrywalletDummy
+    BerrywalletDummy,
+    ChromeColor
 };

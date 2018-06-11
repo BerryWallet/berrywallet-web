@@ -13,23 +13,23 @@ interface INavModalProps {
 export class NavModal extends React.Component<INavModalProps> {
 
     protected slides = [{
-        name: 'Home',
-        param: 'home'
+        label: 'Home',
+        target: 'home'
     }, {
-        name: 'Experience',
-        param: 'experience',
+        label: 'Experience',
+        target: 'experience',
     }, {
-        name: 'Features',
-        param: 'features',
+        label: 'Features',
+        target: 'features',
     }, {
-        name: 'Roadmap',
-        param: 'roadmap',
+        label: 'Roadmap',
+        target: 'roadmap',
     }, {
-        name: 'Ethersnake Game',
-        param: 'ethersnake-game',
+        label: 'Ethersnake Game',
+        target: 'ethersnake-game',
     }, {
-        name: 'Contact Us',
-        param: 'contact-us',
+        label: 'Contact Us',
+        target: 'contact-us',
     }];
 
     public render(): JSX.Element {
@@ -44,11 +44,11 @@ export class NavModal extends React.Component<INavModalProps> {
                     <div className="navigation-modal-content">
                         <InlineLogo className="navigation-modal-logo"/>
                         <nav className={cn('menu', isOpen && '-is-visible')}>
-                            {map(this.slides, ({name, param}) => (
-                                <NavLink key={param}
+                            {map(this.slides, ({label, target}) => (
+                                <NavLink key={target}
                                          activeStyle={{fontWeight: 'bold'}}
                                          className="menu-item"
-                                         to={`#${param}`}
+                                         to={`#${label}`}
                                 >{name}</NavLink>
                             ))}
                         </nav>

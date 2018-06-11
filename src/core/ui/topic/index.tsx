@@ -8,12 +8,20 @@ interface IProps extends React.HTMLProps<{}> {
     titleTag?: 'h1' | 'h2' | 'h3';
     subtitle?: ReactNode;
     isWhite?: boolean;
+    actionButtons?: ReactNode;
 }
 
 export class Topic extends React.Component<IProps> {
     public render(): JSX.Element {
 
-        const {topicTitle, titleTag = 'h1', subtitle = null, className = null, isWhite = false} = this.props;
+        const {
+            topicTitle,
+            titleTag = 'h1',
+            subtitle = null,
+            className = null,
+            isWhite = false,
+            actionButtons = null
+        } = this.props;
 
         const titleProps = {
             className: 'topic__title'
@@ -23,6 +31,7 @@ export class Topic extends React.Component<IProps> {
             <div className={cn('topic', className, isWhite && '-is-white')}>
                 {React.createElement(titleTag, titleProps, topicTitle)}
                 {subtitle && <p className="topic__subtitle">{subtitle}</p>}
+                {actionButtons && <div className="topic__action-buttons">{actionButtons}</div>}
             </div>
         );
     }
