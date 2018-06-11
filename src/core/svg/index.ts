@@ -13,6 +13,7 @@ import Opera from './browser/opera.svg';
 import Edge from './browser/edge.svg';
 
 import Oval from './oval.svg';
+import BerrywalletDummy from './berrywallet-dummy.svg';
 
 const Social = {
     Facebook,
@@ -35,5 +36,6 @@ export {
 
     Logo,
     InlineLogo,
-    Oval
+    Oval,
+    BerrywalletDummy
 };

@@ -20,8 +20,8 @@ export class MainLayout extends React.Component {
         const {isOpenIntro} = this.state;
 
         return (
-            <main className="main-layout">
-                <IntroScreen isOpen={isOpenIntro} onCloseInto={this.closeIntro}/>
+            <main className={cn('main-layout', isOpenIntro && '-is-blocked-scroll')}>
+                <IntroScreen isOpen={isOpenIntro} onCloseIntro={this.closeIntro}/>
 
                 <Navbar isHide={isOpenIntro}/>
                 <div className={cn('main-content')}>{this.props.children}</div>

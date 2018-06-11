@@ -1,0 +1,26 @@
+.topic {
+  max-width: 490px;
+
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.21;
+    color: #333333;
+  }
+
+  &__subtitle {
+    line-height: 1.51;
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: #A0A4B8;
+  }
+
+  &.-is-white &__title {
+    color: white;
+  }
+
+  &.-is-white &__subtitle {
+    color: #D8DDEF;
+  }
+}
