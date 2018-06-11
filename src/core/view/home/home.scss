@@ -8,3 +8,15 @@
     overflow: hidden;
   }
 }
+
+
+.main-content {
+  &__logo {
+    position: fixed;
+    z-index: 50;
+    top: 33px;
+    left: 120px;
+    height: 9px;
+    width: 110px;
+  }
+}
