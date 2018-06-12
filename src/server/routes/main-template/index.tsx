@@ -2,12 +2,10 @@ import React from 'react';
 import serialize from 'serialize-javascript';
 import fs from 'fs';
 import path from 'path';
+import {Helmet} from 'react-helmet';
 
 interface IProps {
     data?: any;
-    title?: string;
-    keywords?: string[];
-    description?: string;
 }
 
 const version = '0.0.0';
@@ -19,14 +17,34 @@ const criticalCSS = fs.readFileSync(
 );
 
 export class MainTemplate extends React.Component<IProps> {
+
+    protected renderApplication(): JSX.Element {
+        const {children} = this.props;
+        if (typeof children === 'string') {
+            return <div id="app" dangerouslySetInnerHTML={{__html: children}}/>;
+        }
+
+        return <div id="app">{children}</div>;
+    }
+
+    protected static getCriticalCss(): string {
+        try {
+            return fs.readFileSync(
+                path.resolve('dist/css/critical.css'),
+                'utf-8'
+            );
+        } catch (error) {
+            console.error('Cannot load Critical CSS', error);
+
+            return '';
+        }
+    }
+
     public render(): JSX.Element {
+        const {data = null} = this.props;
 
-        const criticalLocalCss = fs.readFileSync(
-            path.resolve('dist/css/critical.css'),
-            'utf-8'
-        );
-
-        const {children, data = null, title = null, keywords = [], description} = this.props;
+        const frontApplication = this.renderApplication();
+        const helmet = Helmet.renderStatic();
 
         const mainCssAttribute = {
             href: `/css/main.css?v=${version}`,
@@ -48,13 +66,10 @@ export class MainTemplate extends React.Component<IProps> {
                 <meta name="viewport"
                       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
                 <meta name="format-detection" content="telephone=no"/>
-                <title>{title || 'Berrywallet - Safest multi-currency virtual crypto wallet'}</title>
-                <meta name="keywords"
-                      content={keywords.join(', ')}/>
-                <meta name="description"
-                      content="Blockchain multi-wallet that keeps the perfect balance between simplicity and mastery"/>
+                {helmet.title.toComponent()}
+                {helmet.meta.toComponent()}
                 <link {...mainCssAttribute}/>
-                <style dangerouslySetInnerHTML={{__html: criticalLocalCss}}/>
+                <style dangerouslySetInnerHTML={{__html: MainTemplate.getCriticalCss()}}/>
                 <script {...mainJsAttribute}/>
                 <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_DATA__=${serialize(data)};`}}
                         type="application/javascript"
@@ -63,9 +78,7 @@ export class MainTemplate extends React.Component<IProps> {
                 <link rel="chrome-webstore-item"
                       href="https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn"/>
             </head>
-            <body>
-            <div id="app">{children}</div>
-            </body>
+            <body>{frontApplication}</body>
             </html>
         );
     }

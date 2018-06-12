@@ -26,7 +26,7 @@ export class App extends React.Component<IAppProps> {
         };
 
         return <Route {...routeProps}/>;
-    };
+    }
 
     public render(): JSX.Element {
         return (

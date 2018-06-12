@@ -1,103 +1,104 @@
 import React from 'react';
-import './home.scss';
+import {map, findKey} from 'lodash';
+import PropTypes from 'prop-types';
+import {Helmet} from 'react-helmet';
+import {WindowIntersectionObserverService, IntersectionHandler} from '../../utils';
 import {MainLayout} from '../';
-import {Container, ContainerSlide, Topic} from '../../ui';
-import {InstallButton} from './install-button';
+import {homeSlides, IHomeSlide} from './home-slides';
+import './home.scss';
 
 interface IHomeProps {
 }
 
-export class Home extends React.Component<IHomeProps> {
+export interface IHomeContext {
+    windowIntersectionObserverService: WindowIntersectionObserverService;
+}
+
+export interface IHomeState {
+    childrenRefs: Record<string, HTMLDivElement>;
+    isChildrenIntersect: Record<string, boolean>;
+}
+
+export class Home extends React.PureComponent<IHomeProps, IHomeState> {
+
+    public static readonly contextTypes: PropTypes.ValidationMap<IHomeContext> = {
+        windowIntersectionObserverService: PropTypes.object,
+    };
+
+    public readonly state: IHomeState = {
+        childrenRefs: {},
+        isChildrenIntersect: {},
+    };
+
+    private _windowIntersectionObserverService: WindowIntersectionObserverService;
+    private _childrenIntersectionObserverOptions: IntersectionObserverInit = {
+        rootMargin: '-50% 0% -50% 0%'
+    };
+
+    public constructor(props: IHomeProps, context: IHomeContext) {
+        super(props, context);
+        this._windowIntersectionObserverService = context.windowIntersectionObserverService;
+    }
+
+    public componentDidMount(): void {
+        requestAnimationFrame(() => {
+            for (const key of Object.keys(this.state.childrenRefs)) {
+                this._windowIntersectionObserverService
+                    .getIntersectionObserver(this._handleChildrenIntersection(key), this._childrenIntersectionObserverOptions)
+                    .observe(this.state.childrenRefs[key]);
+            }
+        });
+    }
+
+    public componentWillUnmount(): void {
+        // this._windowIntersectionObserverService.removeIntersectionObserver(this._handleOwnIntersection);
+    }
+
+    private _handleChildrenIntersection = (i: string) => (entries: IntersectionObserverEntry[]) => {
+        const isIntersect = entries.some(
+            (entry: IntersectionObserverEntry) => entry.isIntersecting || entry.intersectionRatio > 0
+        );
+
+        this.setState({
+            isChildrenIntersect: {
+                ...this.state.isChildrenIntersect,
+                [i]: isIntersect,
+            }
+        });
+    }
+
+    private _getChildRef = (key: string) => (node: HTMLDivElement) => {
+        if (!this.state.childrenRefs[key]) {
+            this.setState(() => {
+                return {
+                    childrenRefs: {
+                        ...this.state.childrenRefs,
+                        [key]: node
+                    }
+                };
+            });
+        }
+    }
+
     public render(): JSX.Element {
+        const {isChildrenIntersect} = this.state;
+
         return (
-            <MainLayout>
-                <Container>
-                    <ContainerSlide>
-                        <Topic
-                            topicTitle="Manage crypto funds with ease"
-                            subtitle={<span>
-                                Blockchain multi-wallet that keeps the perfect balance between simplicity and mastery
-                            </span>}
-                            actionButtons={<InstallButton/>}
-                        />
-                    </ContainerSlide>
-                </Container>
+            <MainLayout activeSlide={findKey(isChildrenIntersect)}>
+                <Helmet>
+                    <title>Berrywallet - Safest multi-currency virtual crypto wallet</title>
+                    <meta name="description" content="Berrywallet - Safest multi-currency virtual crypto wallet"/>
+                </Helmet>
 
-                <Container>
-                    <ContainerSlide>
-                        <Topic
-                            topicTitle="Get Used to Holistic Experience"
-                            subtitle={<span>
-                                We aim to make the cryptocurrency usage less hard and awkward. Berrywallet is just
-                                like your regular leather wallet, except it can’t be lost, forgotten or stolen by
-                                thieves with their nimble little fingers.
-                            </span>}
-                        />
-                    </ContainerSlide>
-                </Container>
-
-                <Container>
-                    <ContainerSlide>
-                        <Topic
-                            topicTitle="Forget About Inconvenient Wallet"
-                            subtitle={<span>
-                                Berrywallet is a cross-platform cryptocurrency multi-wallet that allows you to store,
-                                manage and trade your cryptocurrencies conveniently without the need to switch between
-                                wallets or screens.
-                            </span>}
-                        />
-                    </ContainerSlide>
-                </Container>
-
-                <Container>
-                    <ContainerSlide>
-                        <Topic
-                            topicTitle="Benefit From Advanced Features"
-                            subtitle={<span>
-                                Security and convenience are the two cores of our ideology. To make it so we work hard
-                                on three crucial parts - client-centric security model, ease and flawless user
-                                experience.
-                            </span>}
-                            actionButtons={<InstallButton/>}
-                        />
-                    </ContainerSlide>
-                </Container>
-
-                <Container>
-                    <ContainerSlide>
-                        <Topic
-                            topicTitle="Roadmap 2018"
-                            subtitle={<span>
-                                Don’t just take our word for it.<br/>
-                                Download and check this shit out!
-                            </span>}
-                        />
-                    </ContainerSlide>
-                </Container>
-
-                <Container>
-                    <ContainerSlide>
-                        <Topic
-                            topicTitle={<span>Play a Game and <br/>Win 1 Ethereum</span>}
-                            subtitle={<span>
-                                Don’t just take our word for it.<br/>
-                                Download and check this shit out!
-                            </span>}
-                        />
-                    </ContainerSlide>
-                </Container>
-
-                <Container>
-                    <ContainerSlide>
-                        <Topic
-                            topicTitle="Contact Us"
-                            subtitle={<span>
-                                Don’t just take our word for it.<br/>
-                                Download and check this shit out!
-                            </span>}
-                        />
-                    </ContainerSlide>
-                </Container>
+                {map(homeSlides, (slide: IHomeSlide) => {
+                    return (
+                        <div key={slide.key} ref={this._getChildRef(slide.key)} id={`slide-${slide.key}`}>
+                            {React.createElement(slide.node, {
+                                isActive: isChildrenIntersect[slide.key] as boolean
+                            })}
+                        </div>
+                    );
+                })}
             </MainLayout>
         );
     }

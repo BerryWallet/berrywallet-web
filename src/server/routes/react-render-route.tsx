@@ -30,16 +30,13 @@ export const reactRenderRoute = (req, res, next) => {
         : Promise.resolve();
 
     const onRouteSuccess = (data) => {
-        const markup = renderToString(
-            <MainTemplate data={data}>
-                <StaticRouter location={req.url} context={{data: data}}>
-                    <App/>
-                </StaticRouter>
-            </MainTemplate>
+        const applicationMarkup = renderToString(
+            <StaticRouter location={req.url} context={{data: data}}><App/></StaticRouter>
         );
 
-        res.status(200)
-            .send(`<!DOCTYPE html>${markup}`);
+        const markup = renderToString(<MainTemplate data={data}>{applicationMarkup}</MainTemplate>);
+
+        res.status(200).send(`<!DOCTYPE html>${markup}`);
     };
 
     promise.then(onRouteSuccess).catch(next);

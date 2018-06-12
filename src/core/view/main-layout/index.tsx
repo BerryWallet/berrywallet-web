@@ -2,14 +2,21 @@ import React from 'react';
 import cn from 'classnames';
 import {Copywrite} from '../../ui';
 import {InlineLogo} from '../../svg';
-
-import {BackgroundLine} from './background-line';
-import {Navbar} from './navbar';
 import {IntroScreen} from '../home/intro-screen';
+import {Navbar} from './navbar';
+import {BackgroundLine} from './background-line';
 
-export class MainLayout extends React.Component {
+interface IProps {
+    activeSlide?: string;
+}
 
-    public state = {
+interface IState {
+    isOpenIntro: boolean;
+}
+
+export class MainLayout extends React.Component<IProps, IState> {
+
+    public state: IState = {
         isOpenIntro: true
     };
 
@@ -22,13 +29,14 @@ export class MainLayout extends React.Component {
     public render(): JSX.Element {
 
         const {isOpenIntro} = this.state;
+        const {activeSlide} = this.props;
 
         return (
             <main className={cn('main-layout', isOpenIntro && '-is-blocked-scroll')}>
                 <IntroScreen isOpen={isOpenIntro} onCloseIntro={this.closeIntro}/>
                 <BackgroundLine/>
 
-                <Navbar isHide={isOpenIntro}/>
+                <Navbar isHide={isOpenIntro} activeSlide={activeSlide}/>
                 <div className={cn('main-content')}>
                     <InlineLogo className="main-content__logo"/>
                     {this.props.children}

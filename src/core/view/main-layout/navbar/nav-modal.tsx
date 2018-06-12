@@ -1,40 +1,36 @@
 import React from 'react';
 import {map} from 'lodash';
-import {NavLink} from 'react-router-dom';
 import cn from 'classnames';
-
+import {homeSlides, IHomeSlide} from '../../home/home-slides';
 import {Copywrite, Platforms} from '../../../ui';
 import {Oval, InlineLogo} from '../../../svg';
 
 interface INavModalProps {
     isOpen?: boolean;
+    activeSlide?: string;
+    closeNavModal?: () => void;
 }
 
 export class NavModal extends React.Component<INavModalProps> {
 
-    protected slides = [{
-        label: 'Home',
-        target: 'home'
-    }, {
-        label: 'Experience',
-        target: 'experience',
-    }, {
-        label: 'Features',
-        target: 'features',
-    }, {
-        label: 'Roadmap',
-        target: 'roadmap',
-    }, {
-        label: 'Ethersnake Game',
-        target: 'ethersnake-game',
-    }, {
-        label: 'Contact Us',
-        target: 'contact-us',
-    }];
+    protected onClickMenuItem = (key: string) => {
+        const {closeNavModal} = this.props;
+
+        return (event: React.MouseEvent) => {
+
+            const elementToScroll = document.getElementById(`slide-${key}`);
+            if (elementToScroll) {
+                document.getElementsByTagName('html')[0].scrollTop = elementToScroll.offsetTop;
+            }
+
+            if (closeNavModal) {
+                closeNavModal();
+            }
+        };
+    }
 
     public render(): JSX.Element {
-
-        const {isOpen = false} = this.props;
+        const {isOpen = false, activeSlide = null} = this.props;
 
         return (
             <div className={cn('navigation-modal', isOpen && '-is-open')}>
@@ -44,12 +40,11 @@ export class NavModal extends React.Component<INavModalProps> {
                     <div className="navigation-modal-content">
                         <InlineLogo className="navigation-modal-logo"/>
                         <nav className={cn('menu', isOpen && '-is-visible')}>
-                            {map(this.slides, ({label, target}) => (
-                                <NavLink key={target}
-                                         activeStyle={{fontWeight: 'bold'}}
-                                         className="menu-item"
-                                         to={`#${label}`}
-                                >{name}</NavLink>
+                            {map(homeSlides, (slide: IHomeSlide) => (
+                                <div key={slide.key}
+                                     className={cn('menu-item', {'-active': activeSlide === slide.key})}
+                                     onClick={this.onClickMenuItem(slide.key)}
+                                >{slide.label}</div>
                             ))}
                         </nav>
 

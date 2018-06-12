@@ -1,13 +1,12 @@
 import React from 'react';
 import cn from 'classnames';
-import {map} from 'lodash';
-import {NavLink} from 'react-router-dom';
 import {Logo, Social} from '../../../svg';
 import {NavModal} from './nav-modal';
 import './navbar.scss';
 
 interface INavbarProps {
     isHide?: boolean;
+    activeSlide?: string;
 }
 
 interface INavbarState {
@@ -30,7 +29,7 @@ export class Navbar extends React.Component<INavbarProps, INavbarState> {
 
     public render(): JSX.Element {
 
-        const {isHide = false} = this.props;
+        const {isHide = false, activeSlide} = this.props;
         const {isMenuOpen} = this.state;
 
         return (
@@ -66,7 +65,10 @@ export class Navbar extends React.Component<INavbarProps, INavbarState> {
                     </div>
                 </div>
 
-                <NavModal isOpen={!isHide && isMenuOpen}/>
+                <NavModal isOpen={!isHide && isMenuOpen}
+                          activeSlide={activeSlide}
+                          closeNavModal={this.triggerOpenOverlay}
+                />
             </div>
         );
     }
