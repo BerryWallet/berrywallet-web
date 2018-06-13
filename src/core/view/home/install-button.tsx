@@ -5,7 +5,7 @@ interface IState {
     showButton: boolean;
 }
 
-export class InstallButton extends React.Component<React.HTMLProps<{}>, IState> {
+export class InstallButton extends React.PureComponent<React.HTMLProps<{}>, IState> {
 
     public readonly state: IState = {
         showButton: false
@@ -18,8 +18,6 @@ export class InstallButton extends React.Component<React.HTMLProps<{}>, IState> 
     }
 
     public static isFirefox(): boolean {
-        console.log(navigator.userAgent);
-
         return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
     }
 

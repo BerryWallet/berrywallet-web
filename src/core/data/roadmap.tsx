@@ -28,7 +28,7 @@ export const roadmapPoints: TRoadmap = [
     }, {
         label: 'Quarter 3, 2018',
         points: [
-            {label: 'Mobile app (iOS,Android)'},
+            {label: 'Mobile app (iOS, Android)'},
             {label: 'Segwit support'},
             {label: 'Public network explorers'},
             {label: 'Buy by card'}

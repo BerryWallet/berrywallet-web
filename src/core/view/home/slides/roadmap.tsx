@@ -38,8 +38,7 @@ export class RoadmapSlide extends React.Component<ISlideProps> {
                     <Topic
                         topicTitle="Roadmap 2018"
                         subtitle={<span>
-                            Don’t just take our word for it.<br/>
-                            Download and check this shit out!
+                            A plan is what turns a dream into a goal. Here’s how we gonna make it.
                         </span>}
                     />
                 </ContainerSlide>

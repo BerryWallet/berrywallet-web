@@ -23,8 +23,9 @@ export class ExperienceSlide extends React.Component<ISlideProps> {
                 <ScreenSlideComponent
                     image="/image/screen/transaction.png"
                     description={<span>
-                        Single Master Seed Backup combined with 256-bit encryption algorithm ensures 100% security
-                        of your wallet.
+                        We aim to make the cryptocurrency usage less hard and awkward. Berrywallet is just like your
+                        regular leather wallet, except it can’t be lost, forgotten or stolen by thieves with their
+                        nimble little fingers.
                     </span>}
                     isActive={isActive}
                     imageTitle="Get Used to Holistic Experience"

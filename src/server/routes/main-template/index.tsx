@@ -3,13 +3,17 @@ import serialize from 'serialize-javascript';
 import fs from 'fs';
 import path from 'path';
 import {Helmet} from 'react-helmet';
+import {config} from '../../config';
+
+import {GTM} from '../../utils/gtm';
 
 interface IProps {
     data?: any;
 }
 
-const version = '0.0.0';
-const gtmKey = '';
+const version = config.get('app.version');
+const gtmKey = config.get('app.gtmKey');
+const gtmObserver = new GTM(gtmKey);
 
 const criticalCSS = fs.readFileSync(
     path.resolve('dist/css/critical.css'),
@@ -77,8 +81,13 @@ export class MainTemplate extends React.Component<IProps> {
                 <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
                 <link rel="chrome-webstore-item"
                       href="https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn"/>
+
+                {gtmObserver.renderHead()}
             </head>
-            <body>{frontApplication}</body>
+            <body>
+            {gtmObserver.renderBody()}
+            {frontApplication}
+            </body>
             </html>
         );
     }

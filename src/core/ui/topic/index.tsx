@@ -16,7 +16,7 @@ export class Topic extends React.Component<IProps> {
 
         const {
             topicTitle,
-            titleTag = 'h1',
+            titleTag = 'h2',
             subtitle = null,
             className = null,
             isWhite = false,

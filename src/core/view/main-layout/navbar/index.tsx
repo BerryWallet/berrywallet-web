@@ -1,7 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
-import {Logo, Social} from '../../../svg';
+import {map} from 'lodash';
+import {socialList, ISocial} from '../../../data';
+import {Logo} from '../../../svg';
 import {NavModal} from './nav-modal';
+
 import './navbar.scss';
 
 interface INavbarProps {
@@ -43,25 +46,17 @@ export class Navbar extends React.Component<INavbarProps, INavbarState> {
                     </button>
 
                     <div className="navigation-social">
-                        <a href="https://github.com/berrywallet"
-                           className="navigation-social__item"
-                           target="_blank"
-                        ><Social.Github/></a>
+                        {map(socialList, (social: ISocial) => {
+                            const socialLinkProps = {
+                                href: social.url,
+                                className: 'navigation-social__item',
+                                target: '_blank',
+                                key: social.label,
+                                title: social.label
+                            };
 
-                        <a href=" https://telegram.org/berrywallet"
-                           className="navigation-social__item"
-                           target="_blank"
-                        ><Social.Telegram/></a>
-
-                        <a href=" https://twitter.com/berrywallet"
-                           className="navigation-social__item"
-                           target="_blank"
-                        ><Social.Twitter/></a>
-
-                        <a href="https://facebook.com/berrywallet"
-                           className="navigation-social__item"
-                           target="_blank"
-                        ><Social.Facebook/></a>
+                            return <a {...socialLinkProps}>{React.createElement(social.icon)}</a>;
+                        })}
                     </div>
                 </div>
 
