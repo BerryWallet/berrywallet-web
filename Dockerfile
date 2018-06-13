@@ -5,9 +5,11 @@ ENV BW_PORT=80
 
 RUN apk add --no-cache gettext git
 
-COPY . .
-RUN npm install
+WORKDIR /var/www/
 
+COPY . .
+
+RUN npm install
 RUN npm run build:prod
 
 RUN envsubst < /var/www/build/.env.template.yml > /var/www/.env.yml
