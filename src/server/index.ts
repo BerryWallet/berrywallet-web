@@ -26,7 +26,7 @@ expressApp.use('/', express.static(PUBLIC_PATH));
 expressApp.get('*', reactRenderRoute);
 
 expressApp.listen(expressApp.get('port'), () => {
-    console.log(`Server is listening on port: 3000`);
+    console.log(`Server is listening on port: ${expressApp.get('port')}`);
 
     console.log(
         '  App is running at http://%s:%d in %s mode',
