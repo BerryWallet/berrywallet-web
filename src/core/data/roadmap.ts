@@ -26,7 +26,7 @@ export const roadmapPoints: TRoadmap = [
             {label: 'Chrome and Mozilla Firefox extension', isCurrent: true},
         ]
     }, {
-        label: 'Quarter 32, 2018',
+        label: 'Quarter 3, 2018',
         points: [
             {label: 'Mobile app (iOS,Android)'},
             {label: 'Segwit support'},

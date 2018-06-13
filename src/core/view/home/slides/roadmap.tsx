@@ -5,23 +5,26 @@ import {ISlideProps} from '../utils';
 import {IRoadmapPoint, IRoadmapSegment, roadmapPoints} from '../../../data';
 import {Container, ContainerSlide, Topic} from '../../../ui';
 import {ArrowLeft} from '../../../svg';
+import './roadmap.scss';
 
 export class RoadmapSlide extends React.Component<ISlideProps> {
 
     protected renderSegment = (segment: IRoadmapSegment, index: number) => {
         return (
-            <li key={index}>
-                <label>{segment.label}</label>
-                <ul>{map(segment.points, this.renderPoint)}</ul>
+            <li key={index} className="roadmap-segment">
+                <label className="roadmap-segment__label">{segment.label}</label>
+                <ul className="roadmap-points">{map(segment.points, this.renderPoint)}</ul>
             </li>
         );
     };
 
     protected renderPoint = (point: IRoadmapPoint, index: number) => {
         return (
-            <li key={index}>
-                <label>{point.label}</label>
-                {point.isCurrent && <span>We are here <ArrowLeft/></span>}
+            <li key={index} className="roadmap-point">
+                <label className="roadmap-point__label">{point.label}</label>
+                {point.isCurrent && <span className="roadmap-point__current-label">
+                    We are here <ArrowLeft className="roadmap-point__current-label-icon"/>
+                </span>}
             </li>
         );
     };
@@ -40,8 +43,8 @@ export class RoadmapSlide extends React.Component<ISlideProps> {
                         </span>}
                     />
                 </ContainerSlide>
-                <div className={cn('slide-sticky', {'-is-active': isActive})}>
-                    <ul>
+                <div className={cn('slide-sticky', 'slide-sticky-roadmap', {'-is-active': isActive})}>
+                    <ul className="roadmap">
                         {map(roadmapPoints, this.renderSegment)}
                     </ul>
                 </div>
