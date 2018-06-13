@@ -1,42 +1,19 @@
-FROM node:9-wheezy
+FROM node:10.4.1-alpine
 
-LABEL version="0.1"
-LABEL description="BerryWallet Site Docker Image"
+ENV BW_HOST=localhost
+ENV BW_PORT=80
 
-RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb && \
-    dpkg -i dumb-init_*.deb && \
-    rm -f dumb-init_*.deb
+RUN apk add --no-cache gettext git
 
-WORKDIR /usr/src/berrywallet-site
+WORKDIR /var/www/
+
 COPY . .
 
-ENV NODE_ENV=production
-ENV DB_HOST=localhost
-ENV DB_USER=postgres
-ENV DB_PASS=mysecretpassword
-ENV DB_NAME=berrywallet-site
+RUN npm install
+RUN npm run build:prod
 
-# install dev deps, build, rerun yarn to get rid of dev deps
-RUN yarn install --production=false && \
-    npm run build:front:prod && \
-    npm run build:server && \
-    yarn install
+RUN envsubst < /var/www/build/.env.template.yml > /var/www/.env.yml
 
-# remove source code
-RUN rm -rf \
-    src \
-    public \
-    .cache-loader \
-    webpack.config.js \
-    tsconfig.json \
-    tslint.json \
-    postcss.config.js \
-    gulpfile.babel.js \
-    .babelrc \
-    .browserslistrc \
-    yarn.lock
+EXPOSE 80
 
-EXPOSE 3000
-
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["npm", "start"]
+CMD /bin/sh -c "envsubst < /var/www/build/.env.template.yml > /var/www/.env.yml && npm start"

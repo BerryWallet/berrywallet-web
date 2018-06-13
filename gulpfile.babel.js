@@ -1,24 +1,19 @@
-import gulp from 'gulp';
-import Path from 'path';
+const gulp = require('gulp');
+const path = require('path');
 
 const PATH = {
-    SOURCE: Path.join(__dirname, './src'),
-    TARGET: Path.join(__dirname, './dist'),
-    PUBLIC: Path.join(__dirname, './public')
+    SOURCE: path.join(__dirname, './src'),
+    TARGET: path.join(__dirname, './dist'),
+    PUBLIC: path.join(__dirname, './public')
 };
 
 gulp.task('copy', copyTask({
     source: './public/',
-    destinations: [
-        './dist/public'
-    ],
+    destinations: ['./dist/public'],
     // pattern: '/*',
 }));
 
-
-gulp.task('watch', ['copy'], function () {
-    gulp.watch('./public', ['copy']);
-});
+gulp.task('build', ['copy']);
 
 function copyTask(opts) {
     const {
@@ -29,7 +24,7 @@ function copyTask(opts) {
     } = opts;
 
     return () => {
-        let stream = gulp.src(source + pattern, { base: source });
+        let stream = gulp.src(source + pattern, {base: source});
         destinations.forEach((destination) => {
             stream = stream.pipe(gulp.dest(destination))
         });

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="400px" viewBox="0 0 600 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="600" height="400" rx="4"></rect>
+        <filter x="-19.2%" y="-23.8%" width="138.3%" height="157.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="0" dy="20" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="35" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.847058824   0 0 0 0 0.866666667   0 0 0 0 0.937254902  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="berrywallet-dummy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="slice">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Mask">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                <rect stroke="#D8DDEF" stroke-width="1" stroke-linejoin="square" x="0.5" y="0.5" width="599" height="399" rx="4"></rect>
+            </g>
+            <path d="M173.5,374.5 C178.470563,374.5 182.5,370.470563 182.5,365.5 C182.5,360.529437 178.470563,356.5 173.5,356.5 C168.529437,356.5 164.5,360.529437 164.5,365.5 C164.5,370.470563 168.529437,374.5 173.5,374.5 Z" stroke="#D8DDEF" mask="url(#mask-2)" fill-rule="nonzero"></path>
+            <path d="M200.5,374.5 C205.470563,374.5 209.5,370.470563 209.5,365.5 C209.5,360.529437 205.470563,356.5 200.5,356.5 C195.529437,356.5 191.5,360.529437 191.5,365.5 C191.5,370.470563 195.529437,374.5 200.5,374.5 Z" stroke="#D8DDEF" mask="url(#mask-2)" fill-rule="nonzero"></path>
+            <path d="M226.5,374.5 C231.470563,374.5 235.5,370.470563 235.5,365.5 C235.5,360.529437 231.470563,356.5 226.5,356.5 C221.529437,356.5 217.5,360.529437 217.5,365.5 C217.5,370.470563 221.529437,374.5 226.5,374.5 Z" stroke="#D8DDEF" mask="url(#mask-2)" fill-rule="nonzero"></path>
+            <path d="M253.5,374.5 C258.470563,374.5 262.5,370.470563 262.5,365.5 C262.5,360.529437 258.470563,356.5 253.5,356.5 C248.529437,356.5 244.5,360.529437 244.5,365.5 C244.5,370.470563 248.529437,374.5 253.5,374.5 Z" stroke="#D8DDEF" mask="url(#mask-2)" fill-rule="nonzero"></path>
+            <rect stroke="#D8DDEF" fill="#FFFFFF" mask="url(#mask-2)" x="151.5" y="10.5" width="130" height="69" rx="3"></rect>
+            <rect stroke="#D8DDEF" fill="#FFFFFF" mask="url(#mask-2)" x="151.5" y="90.5" width="130" height="69" rx="3"></rect>
+            <rect stroke="#D8DDEF" fill="#FFFFFF" mask="url(#mask-2)" x="151.5" y="171.5" width="130" height="69" rx="3"></rect>
+            <rect stroke="#D8DDEF" fill="#FFFFFF" mask="url(#mask-2)" x="151.5" y="251.5" width="130" height="69" rx="3"></rect>
+            <path d="M13,10.5 C11.6192881,10.5 10.5,11.6192881 10.5,13 L10.5,387 C10.5,388.380712 11.6192881,389.5 13,389.5 L138,389.5 C139.380712,389.5 140.5,388.380712 140.5,387 L140.5,13 C140.5,11.6192881 139.380712,10.5 138,10.5 L13,10.5 Z" stroke="#D8DDEF" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            <path d="M23,286.5 C21.6192881,286.5 20.5,287.619288 20.5,289 L20.5,325 C20.5,326.380712 21.6192881,327.5 23,327.5 L128,327.5 C129.380712,327.5 130.5,326.380712 130.5,325 L130.5,289 C130.5,287.619288 129.380712,286.5 128,286.5 L23,286.5 Z" stroke="#D8DDEF" mask="url(#mask-2)"></path>
+            <path d="M23,182.5 C21.6192881,182.5 20.5,183.619288 20.5,185 L20.5,221 C20.5,222.380712 21.6192881,223.5 23,223.5 L128,223.5 C129.380712,223.5 130.5,222.380712 130.5,221 L130.5,185 C130.5,183.619288 129.380712,182.5 128,182.5 L23,182.5 Z" stroke="#D8DDEF" mask="url(#mask-2)"></path>
+            <path d="M23,338.5 C21.6192881,338.5 20.5,339.619288 20.5,341 L20.5,377 C20.5,378.380712 21.6192881,379.5 23,379.5 L128,379.5 C129.380712,379.5 130.5,378.380712 130.5,377 L130.5,341 C130.5,339.619288 129.380712,338.5 128,338.5 L23,338.5 Z" stroke="#D8DDEF" mask="url(#mask-2)"></path>
+            <path d="M23,234.5 C21.6192881,234.5 20.5,235.619288 20.5,237 L20.5,273 C20.5,274.380712 21.6192881,275.5 23,275.5 L128,275.5 C129.380712,275.5 130.5,274.380712 130.5,273 L130.5,237 C130.5,235.619288 129.380712,234.5 128,234.5 L23,234.5 Z" stroke="#D8DDEF" mask="url(#mask-2)"></path>
+            <path d="M295,175.5 C293.619288,175.5 292.5,176.619288 292.5,178 L292.5,387 C292.5,388.380712 293.619288,389.5 295,389.5 L587,389.5 C588.380712,389.5 589.5,388.380712 589.5,387 L589.5,178 C589.5,176.619288 588.380712,175.5 587,175.5 L295,175.5 Z" stroke="#D8DDEF" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            <path d="M305,185.5 C303.619288,185.5 302.5,186.619288 302.5,188 L302.5,224 C302.5,225.380712 303.619288,226.5 305,226.5 L577,226.5 C578.380712,226.5 579.5,225.380712 579.5,224 L579.5,188 C579.5,186.619288 578.380712,185.5 577,185.5 L305,185.5 Z" stroke="#D8DDEF" fill="#F7F8FC" mask="url(#mask-2)"></path>
+            <path d="M305,287.5 C303.619288,287.5 302.5,288.619288 302.5,290 L302.5,326 C302.5,327.380712 303.619288,328.5 305,328.5 L577,328.5 C578.380712,328.5 579.5,327.380712 579.5,326 L579.5,290 C579.5,288.619288 578.380712,287.5 577,287.5 L305,287.5 Z" stroke="#D8DDEF" fill="#F7F8FC" mask="url(#mask-2)"></path>
+            <rect stroke="#D8DDEF" fill="#F7F8FC" mask="url(#mask-2)" x="302.5" y="235.5" width="133" height="41" rx="3"></rect>
+            <rect stroke="#D8DDEF" fill="#F7F8FC" mask="url(#mask-2)" x="446.5" y="235.5" width="133" height="41" rx="3"></rect>
+            <path d="M295,10.5 C293.619288,10.5 292.5,11.6192881 292.5,13 L292.5,162 C292.5,163.380712 293.619288,164.5 295,164.5 L587,164.5 C588.380712,164.5 589.5,163.380712 589.5,162 L589.5,13 C589.5,11.6192881 588.380712,10.5 587,10.5 L295,10.5 Z" stroke="#D8DDEF" fill="#FFFFFF" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,161 @@
+.intro {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  transition: all 0.4s ease-out;
+  width: 100vw;
+  height: 0;
+
+  visibility: hidden;
+
+  &:after {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: all 0.8s ease 0s;
+    width: 100vw;
+    visibility: hidden;
+    height: 0;
+    background: rgba(white, 0.65);
+  }
+
+  &.-is-open {
+    visibility: visible;
+    height: 100vh;
+
+    &:after {
+      visibility: visible;
+      height: 100vh;
+    }
+  }
+
+  &-wrapper {
+    width: 100vw;
+    height: 100vh;
+
+    background: $color-secondary;
+    color: white;
+  }
+
+  &-content {
+    position: absolute;
+    left: 120px;
+    right: 60px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &__screen {
+      & svg {
+        display: block;
+      }
+    }
+  }
+}
+
+.intro-logo {
+  position: absolute;
+  top: 80px;
+  left: 120px;
+  display: flex;
+  align-items: center;
+
+  &__name {
+    fill: white;
+    margin-left: 10px;
+    margin-top: 3px;
+  }
+}
+
+.intro-lets-start {
+  position: absolute;
+  bottom: 0;
+  left: 120px;
+  cursor: pointer;
+  padding: 0 0 60px 0;
+  background: none;
+  border: none;
+
+  &__label {
+    color: $color-primary;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.4s ease-in;
+  }
+
+  &__loader {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 1px;
+    background: white;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      height: 16px;
+      width: 1px;
+      cursor: pointer;
+      background: $color-primary;
+      top: -16px;
+      transform: translateY(0);
+      animation: loading-lest-start-loader 2s ease-in infinite;
+      @at-root {
+        @keyframes loading-lest-start-loader {
+          0% {
+            transform: translateY(0px) scale(1);
+          }
+          50% {
+            transform: translateY(66px) scale(0.3);
+          }
+          100% {
+            transform: translateY(66px) scale(1);
+          }
+        }
+
+        @keyframes loading-lest-start-loader-hover {
+          0% {
+            transform: translateY(0px) scale(1);
+          }
+          95% {
+            transform: translateY(66px) scale(0.3);
+          }
+          100% {
+            transform: translateY(66px) scale(1);
+          }
+        }
+      }
+    }
+  }
+
+  &:hover &__label {
+    color: darken($color-primary, 15%);
+  }
+
+  &:hover &__loader {
+    &:after {
+      animation: loading-lest-start-loader-hover 0.5s ease-in infinite
+    }
+  }
+}
