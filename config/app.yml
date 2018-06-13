@@ -3,7 +3,7 @@ app:
   port: 80
   secure: true
 
-  gtmKey: 'GTM-NWXJK3K'
+  gtmKey: 'GTM-WDPVPX8'
   flags: []
 
   # Application version
