@@ -3,5 +3,3 @@ npm-debug.log
 dist
 .env.yml
 .env
-yarn.lock
-package-lock.json

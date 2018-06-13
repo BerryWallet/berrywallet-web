@@ -79,8 +79,7 @@ function getSvgLoader() {
         use: [
             {
                 loader: "babel-loader"
-            },
-            {
+            }, {
                 loader: "react-svg-loader",
                 options: {
                     jsx: true,
@@ -119,9 +118,9 @@ const baseConfig = {
     },
     module: {
         rules: [
-            getSvgLoader(),
             getJSLoader(),
             getTSLoader(),
+            getSvgLoader(),
             getScssLoader()
         ]
     },

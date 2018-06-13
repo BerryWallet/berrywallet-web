@@ -1,14 +1,12 @@
-FROM node:9.8.0-alpine
+FROM node:10.4.1-alpine
 
 ENV BW_HOST=localhost
 ENV BW_PORT=80
 
 RUN apk add --no-cache gettext git
 
-COPY package*.json ./
-RUN npm install
-
 COPY . .
+RUN npm install
 
 RUN npm run build:prod
 
