@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import {IPlatformInfo} from './list';
+import {IPlatformInfo} from '../../data';
 
 interface IPlatformProps extends React.HTMLProps<{}> {
     platform: IPlatformInfo;

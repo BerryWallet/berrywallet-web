@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import {map} from 'lodash';
 import {Platform} from './platform';
-import {platformList, IPlatformInfo} from './list';
+import {platformList, IPlatformInfo} from '../../data';
 import './platform.scss';
 
 export class Platforms extends React.Component<React.HTMLProps<{}>> {

@@ -6,8 +6,9 @@
     "main": "./dist/server/index.js",
     "license": "WTFPL",
     "scripts": {
-        "build:prod": "NODE_ENV=production webpack-cli --config ./webpack.config.babel.js",
-        "build": "webpack-cli --config ./webpack.config.babel.js",
+        "build:copy": "gulp copy",
+        "build:prod": "gulp copy && NODE_ENV=production webpack-cli --config ./webpack.config.babel.js",
+        "build": "gulp copy && webpack-cli --config ./webpack.config.babel.js",
         "watch": "webpack-cli -w --config ./webpack.config.babel.js"
     },
     "dependencies": {
@@ -64,6 +65,7 @@
         "react-helmet": "^5.2.0",
         "react-router-dom": "^4.2.2",
         "react-svg-loader": "^2.1.0",
+        "react-touch": "^0.4.3",
         "sass-loader": "^7.0.3",
         "serialize-javascript": "^1.5.0",
         "stats-webpack-plugin": "^0.6.2",

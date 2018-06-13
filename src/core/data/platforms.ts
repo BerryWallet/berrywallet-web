@@ -1,6 +1,6 @@
 import {ComponentClass} from 'react';
 import {Dictionary} from 'lodash';
-import {Browser} from '../../svg';
+import {Browser} from '../svg';
 
 export interface IPlatformInfo {
     alias: string;
@@ -16,7 +16,7 @@ export const platformList: Dictionary<IPlatformInfo> = {
     chrome: {
         alias: 'chrome',
         icon: Browser.Chrome,
-        url: 'https://chrome.google.com/webstore/detail/berrywallet/boidgcdefidhoojfljngigkjffbodjmn'
+        url: 'https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn'
     },
     firefox: {
         alias: 'firefox',

@@ -37,11 +37,13 @@ export const homeSlides: IHomeSlide[] = [
         key: 'roadmap',
         label: 'Roadmap',
         node: RoadmapSlide
-    }, {
-        key: 'ethersnake-game',
-        label: 'Ethersnake Game',
-        node: EthersnakeGameSlide
-    }, {
+    },
+    // {
+    //     key: 'ethersnake-game',
+    //     label: 'Ethersnake Game',
+    //     node: EthersnakeGameSlide
+    // },
+    {
         key: 'contact-us',
         label: 'Contact Us',
         node: ContactUsSlide

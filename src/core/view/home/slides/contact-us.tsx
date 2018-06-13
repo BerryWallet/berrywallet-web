@@ -1,13 +1,13 @@
 import React from 'react';
+import cn from 'classnames';
 import {ISlideProps} from '../utils';
-import {InstallButton} from '../install-button';
 import {Container, ContainerSlide, Topic} from '../../../ui';
 
 export class ContactUsSlide extends React.Component<ISlideProps> {
     public render(): JSX.Element {
         return (
             <Container>
-                <ContainerSlide>
+                <ContainerSlide className={this.props.isActive ? '-is-active' : undefined}>
                     <Topic
                         topicTitle="Contact Us"
                         subtitle={<span>
@@ -16,6 +16,10 @@ export class ContactUsSlide extends React.Component<ISlideProps> {
                         </span>}
                     />
                 </ContainerSlide>
+
+                <div className={cn('slide-sticky', {'-is-active': this.props.isActive})}>
+                    <h1>Contact Us</h1>
+                </div>
             </Container>
         );
     }

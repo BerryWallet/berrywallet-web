@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import './container.scss';
+import './slide.scss';
 
 export class ContainerSlide extends React.Component<React.HTMLProps<{}>> {
     public render(): JSX.Element {

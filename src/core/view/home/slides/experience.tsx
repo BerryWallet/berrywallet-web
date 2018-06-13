@@ -1,13 +1,15 @@
 import React from 'react';
-import {ISlideProps} from '../utils';
-import {InstallButton} from '../install-button';
 import {Container, ContainerSlide, Topic} from '../../../ui';
+import {ISlideProps} from '../utils';
+import {ScreenSlideComponent} from '../components/screen-slide-component';
 
 export class ExperienceSlide extends React.Component<ISlideProps> {
     public render(): JSX.Element {
+        const {isActive} = this.props;
+
         return (
             <Container>
-                <ContainerSlide>
+                <ContainerSlide className={isActive ? '-is-active' : undefined}>
                     <Topic
                         topicTitle="Get Used to Holistic Experience"
                         subtitle={<span>
@@ -17,6 +19,17 @@ export class ExperienceSlide extends React.Component<ISlideProps> {
                     </span>}
                     />
                 </ContainerSlide>
+
+                <ScreenSlideComponent
+                    image="/image/screen/transaction.png"
+                    description={<span>
+                        Single Master Seed Backup combined with 256-bit encryption algorithm ensures 100% security
+                        of your wallet.
+                    </span>}
+                    isActive={isActive}
+                    imageTitle="Get Used to Holistic Experience"
+                    imageAlt="Transactions"
+                />
             </Container>
         );
     }

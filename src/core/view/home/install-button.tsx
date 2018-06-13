@@ -1,9 +1,29 @@
 import React from 'react';
-import {ChromeColor} from '../../svg';
+import {ChromeColor, FirefoxColor} from '../../svg';
 
-export class InstallButton extends React.Component<React.HTMLProps<{}>> {
+interface IState {
+    showButton: boolean;
+}
 
-    protected triggerInstall = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+export class InstallButton extends React.Component<React.HTMLProps<{}>, IState> {
+
+    public readonly state: IState = {
+        showButton: false
+    };
+
+    public componentDidMount(): void {
+        this.setState({
+            showButton: true
+        });
+    }
+
+    public static isFirefox(): boolean {
+        console.log(navigator.userAgent);
+
+        return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+    }
+
+    protected triggerInstallChrome = (event: React.MouseEvent<HTMLAnchorElement>): void => {
         if (!window.chrome) {
             return;
         }
@@ -26,16 +46,47 @@ export class InstallButton extends React.Component<React.HTMLProps<{}>> {
         };
 
         window.chrome.webstore.install(url, onSuccess, onFailure);
-    };
+    }
 
-    public render(): JSX.Element {
+    protected triggerInstallFirefox = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        const itemUrl = 'https://addons.mozilla.org/firefox/downloads/file/939925/berrywallet-1.4.4-fx.xpi';
+        window.open(itemUrl, '_blank');
+
+        event.preventDefault();
+    }
+
+    protected renderChromeButton(): JSX.Element {
         const installButtonProps = {
-            onClick: this.triggerInstall,
+            onClick: this.triggerInstallChrome,
             href: 'https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn',
             target: '_blank',
             className: 'btn'
         };
 
         return <a {...installButtonProps}><ChromeColor className="btn__icon"/> Add to Chrome</a>;
+    }
+
+    protected renderFirefoxButton(): JSX.Element {
+        const installButtonProps = {
+            onClick: this.triggerInstallFirefox,
+            href: 'https://addons.mozilla.org/firefox/addon/berrywallet',
+            target: '_blank',
+            className: 'btn'
+        };
+
+        return <a {...installButtonProps}><FirefoxColor className="btn__icon"/> Add to Firefox</a>;
+    }
+
+    public render(): JSX.Element | null {
+
+        if (!this.state.showButton) {
+            return null;
+        }
+
+        if (InstallButton.isFirefox()) {
+            return this.renderFirefoxButton();
+        }
+
+        return this.renderChromeButton();
     }
 }

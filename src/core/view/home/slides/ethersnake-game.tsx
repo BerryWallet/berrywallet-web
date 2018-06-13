@@ -1,5 +1,5 @@
 import React from 'react';
-import {InstallButton} from '../install-button';
+import cn from 'classnames';
 import {ISlideProps} from '../utils';
 import {Container, ContainerSlide, Topic} from '../../../ui';
 
@@ -7,7 +7,7 @@ export class EthersnakeGameSlide extends React.Component<ISlideProps> {
     public render(): JSX.Element {
         return (
             <Container>
-                <ContainerSlide>
+                <ContainerSlide className={this.props.isActive ? '-is-active' : undefined}>
                     <Topic
                         topicTitle={<span>Play a Game and <br/>Win 1 Ethereum</span>}
                         subtitle={<span>
@@ -16,6 +16,10 @@ export class EthersnakeGameSlide extends React.Component<ISlideProps> {
                         </span>}
                     />
                 </ContainerSlide>
+
+                <div className={cn('slide-sticky', {'-is-active': this.props.isActive})}>
+                    <h1>Play a Game and <br/>Win 1 Ethereum</h1>
+                </div>
             </Container>
         );
     }

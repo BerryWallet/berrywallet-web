@@ -1,5 +1,5 @@
-import gulp from 'gulp';
-import path from 'path';
+const gulp = require('gulp');
+const path = require('path');
 
 const PATH = {
     SOURCE: path.join(__dirname, './src'),
