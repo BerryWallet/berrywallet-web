@@ -6,6 +6,7 @@
     "main": "./dist/server/index.js",
     "license": "WTFPL",
     "scripts": {
+        "start": "node ./dist/server.js",
         "build:copy": "gulp copy",
         "build:prod": "gulp copy && NODE_ENV=production webpack-cli --config ./webpack.config.babel.js",
         "build": "gulp copy && webpack-cli --config ./webpack.config.babel.js",
