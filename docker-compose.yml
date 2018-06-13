@@ -39,10 +39,6 @@ services:
   #|------------------------------------------
   web:
     image: berrywallet/site:latest
-    volumes:
-      - /var/log/berrywallet/web:/var/log/nginx
-    ports:
-      - 1935:1935
     environment:
       VIRTUAL_HOST: berrywallet.io
       VIRTUAL_PORT: 80
@@ -53,9 +49,3 @@ services:
     depends_on:
       - nginx-proxy
       - letsencrypt-nginx
-
-
-volumes:
-  # PostgreSQL Data
-  db_data: {}
-  log_volume01: {}
