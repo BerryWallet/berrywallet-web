@@ -6,11 +6,7 @@
 .platform-item {
   color: currentColor;
   cursor: pointer;
-
-  &.-inactive {
-    opacity: 0.5;
-    cursor: default;
-  }
+  position: relative;
 
   & + & {
     margin-left: 24px;
@@ -24,7 +20,37 @@
     display: block;
   }
 
+  &.-inactive {
+    cursor: default;
+  }
+
+  &.-inactive &__icon {
+    opacity: 0.5;
+  }
+
+  &__soon {
+    transition: all 0.4s;
+    position: absolute;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    width: 70px;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &:hover &__soon {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
   &:hover:not(.-inactive) &__icon {
     fill: $color-primary;
+    transform: scale(1.2);
   }
 }

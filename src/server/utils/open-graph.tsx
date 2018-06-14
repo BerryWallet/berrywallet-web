@@ -15,13 +15,13 @@ export class OpenGraph extends React.Component<IOpenGraphProps> {
             <React.Fragment>
                 {/*<meta name="ICBM" content="50.440878, 30.437546"/>*/}
                 {/*<meta property="fb:app_id" content="1736415216605807"/>*/}
-                <meta name="geo.region" content="UA-30"/>
-                <meta name="geo.placename" content="World"/>
-                <meta name="geo.position" content="50.440878;30.437546"/>
-
                 {/*<meta name="twitter:site" content="@MaksymTymchyk"/>*/}
                 {/*<meta name="twitter:creator" content="@MaksymTymchyk"/>*/}
                 {/*<meta name="twitter:card" content="summary_large_image"/>*/}
+
+                <meta name="geo.region" content="UA-30"/>
+                <meta name="geo.placename" content="World"/>
+                <meta name="geo.position" content="50.440878;30.437546"/>
 
                 <meta property="og:url" content={baseHost}/>
                 <meta property="og:site_name" content="Berrywallet"/>

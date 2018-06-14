@@ -1,34 +1,35 @@
 import {ComponentClass} from 'react';
 import {Dictionary} from 'lodash';
-import {Browser} from '../svg';
+import {Browser, Platform} from '../svg';
 
 export interface IPlatformInfo {
+    name: string;
     alias: string;
     icon: ComponentClass;
     url?: string;
 }
 
 export const platformList: Dictionary<IPlatformInfo> = {
-    edge: {
-        alias: 'edge',
-        icon: Browser.Edge
-    },
     chrome: {
         alias: 'chrome',
+        name: 'Chrome Extension',
         icon: Browser.Chrome,
         url: 'https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn'
     },
     firefox: {
         alias: 'firefox',
+        name: 'Firefox Add-on',
         icon: Browser.Firefox,
         url: 'https://addons.mozilla.org/firefox/addon/berrywallet'
     },
-    safari: {
-        alias: 'safari',
-        icon: Browser.Safari
+    apple: {
+        alias: 'apple',
+        name: 'iOS Application',
+        icon: Platform.Apple
     },
-    opera: {
-        alias: 'opera',
-        icon: Browser.Opera
+    android: {
+        alias: 'android',
+        name: 'Android Application',
+        icon: Platform.Android
     }
 };

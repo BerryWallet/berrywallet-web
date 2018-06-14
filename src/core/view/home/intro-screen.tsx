@@ -4,7 +4,7 @@ import {Swipeable} from 'react-touch';
 import {Topic} from '../../ui';
 import {BerrywalletDummy, Logo, InlineLogo} from '../../svg';
 
-import './intro-screen.scss';
+// import './intro-screen.scss';
 
 interface IIntroProps extends React.HTMLProps<{}> {
     isOpen?: boolean;

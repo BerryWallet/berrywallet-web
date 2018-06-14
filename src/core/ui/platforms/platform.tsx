@@ -24,6 +24,7 @@ export class Platform extends React.Component<IPlatformProps> {
                 {React.createElement<React.HTMLProps<{}>>(platform.icon, {
                     className: 'platform-item__icon'
                 })}
+                <label className="platform-item__soon">{platform.url ? platform.name : 'Coming soon'}</label>
             </a>
         );
     }
