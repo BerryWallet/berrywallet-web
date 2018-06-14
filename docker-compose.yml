@@ -46,6 +46,7 @@ services:
       BW_ENV: production
       BW_HOST: berrywallet.io
       BW_PORT: 80
+      BW_SECURE: "true"
     depends_on:
       - nginx-proxy
       - letsencrypt-nginx

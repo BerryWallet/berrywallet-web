@@ -15,10 +15,10 @@ const version = config.get('app.version');
 const gtmKey = config.get('app.gtmKey');
 const gtmObserver = new GTM(gtmKey);
 
-const criticalCSS = fs.readFileSync(
-    path.resolve('dist/css/critical.css'),
-    'utf-8'
-);
+// const criticalCSS = fs.readFileSync(
+//     path.resolve('dist/css/critical.css'),
+//     'utf-8'
+// );
 
 export class MainTemplate extends React.Component<IProps> {
 

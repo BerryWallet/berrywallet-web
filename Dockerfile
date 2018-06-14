@@ -2,6 +2,7 @@ FROM node:10.4.1-alpine
 
 ENV BW_HOST=localhost
 ENV BW_PORT=80
+ENV BW_SECURE=true
 
 RUN apk add --no-cache gettext git
 

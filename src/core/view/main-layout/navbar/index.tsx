@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import {map} from 'lodash';
+import {Swipeable} from 'react-touch';
 import {socialList, ISocial} from '../../../data';
 import {Logo} from '../../../svg';
 import {NavModal} from './nav-modal';
@@ -28,7 +29,13 @@ export class Navbar extends React.Component<INavbarProps, INavbarState> {
                 isMenuOpen: !this.state.isMenuOpen
             });
         });
-    };
+    }
+
+    protected triggerMenuOpen = (menuOpen: boolean) => {
+        return () => {
+            this.setState({isMenuOpen: menuOpen});
+        };
+    }
 
     public render(): JSX.Element {
 
@@ -40,10 +47,12 @@ export class Navbar extends React.Component<INavbarProps, INavbarState> {
                 <div className={cn('navigation-sidebar', {'-is-hide': isHide, '-is-menu-open': isMenuOpen})}>
                     <Logo className="navigation-sidebar__logo"/>
 
-                    <button className="menu-trigger" onClick={this.triggerOpenOverlay}>
-                        <span className="menu-trigger__line"/>
-                        <span className="menu-trigger__line"/>
-                    </button>
+                    <Swipeable onSwipeRight={this.triggerMenuOpen(true)}>
+                        <button className="menu-trigger" onClick={this.triggerOpenOverlay}>
+                            <span className="menu-trigger__line"/>
+                            <span className="menu-trigger__line"/>
+                        </button>
+                    </Swipeable>
 
                     <div className="navigation-social">
                         {map(socialList, (social: ISocial) => {
