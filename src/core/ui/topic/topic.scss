@@ -1,10 +1,10 @@
 .topic {
-  // max-width: 490px;
-  max-width: calc(50vw - 120px - 30px);
+  max-width: calc(100% - 40px);
+  margin: 30px auto;
 
   &__title {
     // font-size: 36px;
-    font-size: 2.5vw;
+    font-size: 28px;
     font-weight: bold;
     line-height: 1.21;
     color: #333333;
@@ -13,9 +13,8 @@
   &__subtitle {
     line-height: 1.51;
     // font-size: 18px;
-    font-size: 1.25vw;
-    // margin-top: 10px;
-    margin-top: 0.7vw;
+    font-size: 16px;
+    margin-top: 10px;
     font-weight: 500;
     color: #A0A4B8;
   }
@@ -23,8 +22,7 @@
   &__action-buttons {
     position: absolute;
     top: 100%;
-    // margin-top: 40px;
-    margin-top: 2.7vw;
+    margin-top: 40px;
     left: 0;
     width: 100%;
   }
@@ -35,5 +33,30 @@
 
   &.-is-white &__subtitle {
     color: #D8DDEF;
+  }
+
+  @include from-width(768px) {
+    max-width: calc(50vw - 120px - 30px);
+
+    &__title {
+      font-size: 2.5vw;
+    }
+
+    &__subtitle {
+      font-size: 1.25vw;
+      margin-top: 0.7vw;
+    }
+
+    &__action-buttons {
+      margin-top: 2.7vw;
+    }
+  }
+
+  @include to-width(768px) {
+    &__action-buttons {
+      position: relative;
+      margin-top: 20px;
+      top: auto;
+    }
   }
 }

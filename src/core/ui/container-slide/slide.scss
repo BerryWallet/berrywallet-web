@@ -1,17 +1,130 @@
 .slide {
   transition: all 0.4s;
-  min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 0 0 120px;
-  opacity: 0;
 
   &-wrapper {
     // max-width: 490px;
-    max-width: calc(50vw - 120px - 2vw);
   }
 
   &.-is-active {
     opacity: 1;
+  }
+
+  @include from-width(768px) {
+    min-height: 100vh;
+    padding: 0 0 0 120px;
+
+    opacity: 0;
+
+    &-wrapper {
+      max-width: calc(50vw - 120px - 2vw);
+    }
+  }
+}
+
+.slide-sticky {
+  transition: opacity 0.4s,
+  visibility 0.4s;
+
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 50vw;
+  background: white;
+
+  opacity: 0;
+  visibility: hidden;
+
+  &.-is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__platforms {
+    color: $color-text-main;
+    justify-content: center;
+    margin: 30px auto;
+
+    @include from-width(768px) {
+      margin: 0;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__image {
+    border-radius: 4px;
+    box-shadow: 0 20px 70px $color-text-secondary;
+    max-width: 600px;
+    width: calc(100% - 40px);
+    height: auto;
+
+    @include from-width(768px) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      width: calc(100% - 80px);
+    }
+
+    @include from-width(1441px) {
+      width: 83%;
+      max-width: 1000px;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 1.57;
+    color: $color-text-main;
+    font-weight: 500;
+    width: 100%;
+    max-width: 530px;
+    padding: 0 20px;
+    margin: 30px auto;
+
+    @include from-width(768px) {
+      text-align: center;
+      margin: 0;
+      transform: translateX(-50%);
+      left: 50%;
+      position: absolute;
+      bottom: 80px;
+    }
+  }
+
+  @include to-width(768px) {
+    top: auto;
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    background: none;
+    position: relative;
+
+    opacity: 1;
+    visibility: visible;
+
+    &__image {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      margin: 0 auto;
+      display: block;
+    }
+
+    &__platforms {
+      position: relative;
+      transform: none;
+    }
+
+    &__description {
+
+    }
   }
 }

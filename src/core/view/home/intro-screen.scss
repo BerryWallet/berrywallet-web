@@ -78,6 +78,19 @@
       }
     }
   }
+
+  @include to-width(768px) {
+    &-content {
+      left: 20px;
+      &__text {
+        max-width: 100%;
+      }
+
+      &__screen {
+        display: none;
+      }
+    }
+  }
 }
 
 .intro-logo {
@@ -92,6 +105,11 @@
     margin-left: 10px;
     margin-top: 3px;
   }
+
+  @include to-width(768px) {
+    top: 20px;
+    left: 20px;
+  }
 }
 
 .intro-lets-start {
@@ -102,6 +120,10 @@
   padding: 0 0 60px 0;
   background: none;
   border: none;
+
+  @include to-width(768px) {
+    left: 20px;
+  }
 
   &__label {
     color: $color-primary;

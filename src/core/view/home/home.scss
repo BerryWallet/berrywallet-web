@@ -36,14 +36,19 @@
     left: 120px;
     height: 9px;
     width: 110px;
+
+    @include to-width(768px) {
+      display: none;
+    }
   }
 }
 
 .btn {
+  font-size: 14px;
+  padding: 16px 20px;
+
   transition: all 0.4s;
   display: inline-block;
-  // font-size: 14px;
-  font-size: 1vw;
   font-weight: 500;
   background: white;
   border-radius: 3px;
@@ -52,8 +57,7 @@
   cursor: pointer;
   text-align: center;
   line-height: 1.51;
-  // padding: 16px 20px;
-  padding: 1.1vw 1.4vw;
+
   box-shadow: 0 4px 8px $color-text-secondary;
   vertical-align: middle;
 
@@ -69,74 +73,19 @@
     vertical-align: middle;
     display: inline-block;
 
-    // margin-right: 10px;
-    // height: 20px;
-    // width: 20px;
-
-    margin-right: 0.7vw;
-    height: 1.38vw;
-    width: 1.38vw;
-  }
-}
-
-.slide-sticky {
-  transition: opacity 0.4s,
-              visibility 0.4s;
-
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 50vw;
-  background: white;
-
-  opacity: 0;
-  visibility: hidden;
-
-  &.-is-active {
-    opacity: 1;
-    visibility: visible;
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
   }
 
-  &__platforms {
-    position: absolute;
-    margin: 0;
-    color: $color-text-main;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  @include from-width(768px) {
+    font-size: 1vw;
+    padding: 1.1vw 1.4vw;
 
-  &__image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    border-radius: 4px;
-    box-shadow: 0 20px 70px $color-text-secondary;
-    max-width: 600px;
-    width: calc(100% - 60px);
-    height: auto;
-
-    @include from-width(1441px) {
-      width: 83%;
-      max-width: 1000px;
+    &__icon {
+      margin-right: 0.7vw;
+      height: 1.38vw;
+      width: 1.38vw;
     }
-  }
-
-  &__description {
-    position: absolute;
-    text-align: center;
-    bottom: 80px;
-    font-size: 14px;
-    line-height: 1.57;
-    color: $color-text-main;
-    font-weight: 500;
-    width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 510px;
-    padding: 0 10px;
   }
 }
