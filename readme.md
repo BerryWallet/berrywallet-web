@@ -15,6 +15,8 @@
 
 <hr />
 
+[![Build Status](https://travis-ci.com/berrywallet/berrywallet-site.svg?branch=master)](https://travis-ci.com/berrywallet/berrywallet-site)
+
 ## Developing
 
 ### 1. Configure development environment
@@ -28,16 +30,16 @@ Install required packages
 $ yarn install
 ```
 
-### 3. Build and run front
+### 3. Build front
 Build front bundle and run webpack in watch mode
 ```bash
-$ npm run front:dev
+$ yarn build
 ```
 
 ### 4. Build and run server
 In other terminal you need to build server and run it
 ```bash
-$ npm run build:server && npm start
+$ yarn start
 ```
 
 
