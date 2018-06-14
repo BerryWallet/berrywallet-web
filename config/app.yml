@@ -5,6 +5,3 @@ app:
 
   gtmKey: 'GTM-WDPVPX8'
   flags: []
-
-  # Application version
-  version: 0.2.0

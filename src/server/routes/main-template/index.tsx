@@ -12,7 +12,7 @@ interface IProps {
     data?: any;
 }
 
-const version = config.get('app.version');
+const version = process.env.npm_package_version as string;
 const gtmKey = config.get('app.gtmKey');
 const gtmObserver = new GTM(gtmKey);
 
