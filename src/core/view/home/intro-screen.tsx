@@ -54,7 +54,7 @@ export class IntroScreen extends React.Component<IIntroProps> {
                                    subtitle="perfect balance between simplicity and mastery"
                                    className="intro-content__text"
                                    isWhite
-                                   titleTag="h2"
+                                   titleTag="h1"
                             />
 
                             <div className="intro-content__screen">
