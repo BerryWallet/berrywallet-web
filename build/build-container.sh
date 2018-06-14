@@ -8,6 +8,6 @@ docker build \
     --tag berrywallet/site \
     --no-cache .
 
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+echo "$DOCKER_PASSWORD" | docker login --password-stdin --username "$DOCKER_USERNAME"
 
 docker push berrywallet/site

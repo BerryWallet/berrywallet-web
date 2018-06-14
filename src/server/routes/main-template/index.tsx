@@ -6,6 +6,7 @@ import {Helmet} from 'react-helmet';
 import {config} from '../../config';
 
 import {GTM} from '../../utils/gtm';
+import {OpenGraph} from '../../utils/open-graph';
 
 interface IProps {
     data?: any;
@@ -81,6 +82,8 @@ export class MainTemplate extends React.Component<IProps> {
                 <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
                 <link rel="chrome-webstore-item"
                       href="https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn"/>
+
+                <OpenGraph/>
 
                 {gtmObserver.renderHead()}
             </head>
