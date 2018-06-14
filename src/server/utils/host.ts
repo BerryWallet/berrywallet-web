@@ -5,5 +5,5 @@ export function getUrl(): string {
     const port = config.get('app.port');
     const isSecure = config.get('app.secure');
 
-    return `${isSecure ? 'https' : 'http'}://${host}:${port}`;
+    return `${isSecure ? 'https' : 'http'}://${host}`;
 }

@@ -17,16 +17,19 @@ import BerrywalletDummy from './berrywallet-dummy.svg';
 import ChromeColor from './chrome-color.svg';
 import FirefoxColor from './firefox-color.svg';
 
+import Apple from './platform/apple.svg';
+import Android from './platform/android.svg';
+
 import ArrowLeft from './arrow-left.svg';
 
-const Social = {
+export const Social = {
     Facebook,
     Twitter,
     Telegram,
     Github
 };
 
-const Browser = {
+export const Browser = {
     Safari,
     Chrome,
     Firefox,
@@ -34,10 +37,12 @@ const Browser = {
     Edge
 };
 
-export {
-    Social,
-    Browser,
+export const Platform = {
+    Apple,
+    Android
+};
 
+export {
     Logo,
     InlineLogo,
     Oval,

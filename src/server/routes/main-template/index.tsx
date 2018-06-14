@@ -16,10 +16,10 @@ const version = process.env.npm_package_version as string;
 const gtmKey = config.get('app.gtmKey');
 const gtmObserver = new GTM(gtmKey);
 
-// const criticalCSS = fs.readFileSync(
-//     path.resolve('dist/css/critical.css'),
-//     'utf-8'
-// );
+const criticalCSS: string = fs.readFileSync(
+    path.resolve('dist/css/critical.css'),
+    'utf-8'
+);
 
 export class MainTemplate extends React.Component<IProps> {
 
@@ -34,10 +34,7 @@ export class MainTemplate extends React.Component<IProps> {
 
     protected static getCriticalCss(): string {
         try {
-            return fs.readFileSync(
-                path.resolve('dist/css/critical.css'),
-                'utf-8'
-            );
+            return criticalCSS;
         } catch (error) {
             console.error('Cannot load Critical CSS', error);
 
