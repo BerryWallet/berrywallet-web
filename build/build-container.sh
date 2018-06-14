@@ -10,7 +10,7 @@ docker build \
     --tag berrywallet/site:$APPLICATION_VERSION \
     --tag berrywallet/site .
 
-echo "$DOCKER_PASSWORD" | docker login --password-stdin --username "$DOCKER_USERNAME"
+docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
 
 docker push berrywallet/site:$APPLICATION_VERSION
 docker push berrywallet/site:latest
