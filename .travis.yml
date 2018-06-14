@@ -5,6 +5,10 @@ sudo: required
 services:
   - docker
 
+branches:
+  only:
+    - master
+
 script: bash ./build/build-container.sh
 
 # deploy:
