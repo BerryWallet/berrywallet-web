@@ -7,8 +7,8 @@
   opacity: 0;
 
   &-wrapper {
-    width: calc(50vw - 150px);
-    max-width: 490px;
+    // max-width: 490px;
+    max-width: calc(50vw - 120px - 2vw);
   }
 
   &.-is-active {

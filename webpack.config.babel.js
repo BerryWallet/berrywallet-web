@@ -61,7 +61,7 @@ function getScssLoader() {
             }, {
                 loader: "sass-loader",
                 options: {
-                    data: `@import "vendor/variables.scss";`,
+                    data: `@import "common.scss";`,
                     includePaths: [
                         path.resolve(__dirname, './src/style')
                     ]

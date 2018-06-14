@@ -66,9 +66,15 @@
       width: 50vw;
       & svg {
         display: block;
+        margin: 0 auto;
         max-width: 600px;
         width: calc(100% - 60px);
         height: auto;
+
+        @include from-width(1441px) {
+          width: 83%;
+          max-width: 1000px;
+        }
       }
     }
   }

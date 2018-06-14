@@ -5,7 +5,7 @@ sudo: required
 services:
   - docker
 
-script: bash build-container.sh
+script: bash ./build/build-container.sh
 
 # deploy:
 #   provider: script

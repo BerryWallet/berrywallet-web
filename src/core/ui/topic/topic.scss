@@ -1,8 +1,10 @@
 .topic {
-  max-width: 490px;
+  // max-width: 490px;
+  max-width: calc(50vw - 120px - 30px);
 
   &__title {
-    font-size: 36px;
+    // font-size: 36px;
+    font-size: 2.5vw;
     font-weight: bold;
     line-height: 1.21;
     color: #333333;
@@ -10,8 +12,10 @@
 
   &__subtitle {
     line-height: 1.51;
-    font-size: 18px;
-    margin-top: 10px;
+    // font-size: 18px;
+    font-size: 1.25vw;
+    // margin-top: 10px;
+    margin-top: 0.7vw;
     font-weight: 500;
     color: #A0A4B8;
   }
@@ -19,7 +23,8 @@
   &__action-buttons {
     position: absolute;
     top: 100%;
-    margin-top: 40px;
+    // margin-top: 40px;
+    margin-top: 2.7vw;
     left: 0;
     width: 100%;
   }

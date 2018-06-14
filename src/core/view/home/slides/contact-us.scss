@@ -12,6 +12,8 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      margin-top: 70px;
+      margin-bottom: 30px;
     }
 
     &__item {
@@ -49,7 +51,7 @@
       }
 
       & + & {
-        margin-left: 50px;
+        margin-left: 3.4vw;
       }
     }
   }
