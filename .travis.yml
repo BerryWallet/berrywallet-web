@@ -1,10 +1,14 @@
+language: javascript
+
 sudo: required
 
 services:
   - docker
 
-deploy:
-  provider: script
-  script: bash build-container.sh
-  on:
-    branch: master
+script: bash build-container.sh
+
+# deploy:
+#   provider: script
+#   script: bash build-container.sh
+#   on:
+#     branch: master
