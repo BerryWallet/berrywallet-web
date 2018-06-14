@@ -86,8 +86,14 @@ export class Home extends React.PureComponent<IHomeProps, IHomeState> {
         return (
             <MainLayout activeSlide={findKey(isChildrenIntersect)}>
                 <Helmet>
-                    <title>Berrywallet - PC virtual wallet for bitcoin, ethereum, dash & litecoin</title>
+                    <title>
+                        Berrywallet - PC virtual wallet for Bitcoin, Ethereum, Dash & Litecoin
+                    </title>
                     <meta name="description"
+                          content="Safest blockchain cryptocurrency multi-wallet with a perfect balance between simplicity and mastery"/>
+                    <meta property="og:title"
+                          content="Berrywallet - PC virtual wallet for Bitcoin, Ethereum, Dash & Litecoin"/>
+                    <meta property="og:description"
                           content="Safest blockchain cryptocurrency multi-wallet with a perfect balance between simplicity and mastery"/>
                 </Helmet>
 
