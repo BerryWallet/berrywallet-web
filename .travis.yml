@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+deploy:
+  provider: script
+  script: bash build-container.sh
+  on:
+    branch: master
