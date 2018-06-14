@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+
+  #|------------------------------------------
+  #| FrontEnd
+  #| WEB Application as NodeJS Express
+  #|------------------------------------------
+  web:
+    image: berrywallet/site:latest
+    environment:
+      BW_ENV: production
+      BW_HOST: bw.loc
+      BW_PORT: 80
+      BW_SECURE: "true"
+    depends_on:
+      - nginx-proxy
+      - letsencrypt-nginx
