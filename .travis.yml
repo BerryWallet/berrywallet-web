@@ -9,6 +9,11 @@ branches:
   only:
     - master
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install jq
+  - docker pull berrywallet/site:latest
+
 script: bash ./build/build-container.sh
 
 # deploy:
