@@ -43,7 +43,7 @@
     visibility: visible;
   }
 
-  &__platforms {
+  &__platforms.platforms {
     color: $color-text-main;
     justify-content: center;
     margin: 30px auto;
