@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import './slide.scss';
 
-export class ContainerSlide extends React.Component<React.HTMLProps<{}>> {
+export class ContainerSlide extends React.PureComponent<React.HTMLProps<{}>> {
     public render(): JSX.Element {
         const {className = null, children} = this.props;
         return (

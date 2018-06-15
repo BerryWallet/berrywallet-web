@@ -11,7 +11,7 @@ interface IProps extends React.HTMLProps<{}> {
     actionButtons?: ReactNode;
 }
 
-export class Topic extends React.Component<IProps> {
+export class Topic extends React.PureComponent<IProps> {
     public render(): JSX.Element {
 
         const {

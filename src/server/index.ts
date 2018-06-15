@@ -22,7 +22,7 @@ expressApp.use(cors());
 expressApp.use(compression());
 expressApp.use(logger('dev'));
 
-expressApp.use('/', express.static(PUBLIC_PATH));
+expressApp.use('/', express.static(PUBLIC_PATH, {maxAge: 31557600000}));
 expressApp.get('*', reactRenderRoute);
 
 expressApp.listen(expressApp.get('port'), () => {

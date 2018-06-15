@@ -62,13 +62,19 @@
     align-items: flex-end;
     justify-content: space-between;
 
+    &__text {
+      &.topic {
+        margin: 0;
+      }
+    }
+
     &__screen {
       width: 50vw;
       & svg {
         display: block;
         margin: 0 auto;
         max-width: 600px;
-        width: calc(100% - 60px);
+        width: calc(100% - 80px);
         height: auto;
 
         @include from-width(1441px) {

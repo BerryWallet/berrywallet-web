@@ -6,7 +6,7 @@ export interface IOpenGraphProps {
     description?: string;
 }
 
-export class OpenGraph extends React.Component<IOpenGraphProps> {
+export class OpenGraph extends React.PureComponent<IOpenGraphProps> {
 
     public render(): JSX.Element {
 
@@ -14,10 +14,6 @@ export class OpenGraph extends React.Component<IOpenGraphProps> {
         return (
             <React.Fragment>
                 {/*<meta name="ICBM" content="50.440878, 30.437546"/>*/}
-                {/*<meta property="fb:app_id" content="1736415216605807"/>*/}
-                {/*<meta name="twitter:site" content="@MaksymTymchyk"/>*/}
-                {/*<meta name="twitter:creator" content="@MaksymTymchyk"/>*/}
-                {/*<meta name="twitter:card" content="summary_large_image"/>*/}
 
                 <meta name="geo.region" content="UA-30"/>
                 <meta name="geo.placename" content="World"/>
@@ -29,6 +25,12 @@ export class OpenGraph extends React.Component<IOpenGraphProps> {
                 <meta property="og:image" content={`${baseHost}/image/social-cover.png`}/>
                 <meta property="og:image:width" content="1200"/>
                 <meta property="og:image:height" content="630"/>
+
+                {/*<meta property="fb:app_id" content="1736415216605807"/>*/}
+
+                {/*<meta name="twitter:site" content="@MaksymTymchyk"/>*/}
+                {/*<meta name="twitter:creator" content="@MaksymTymchyk"/>*/}
+                {/*<meta name="twitter:card" content="summary_large_image"/>*/}
             </React.Fragment>
         );
     }
