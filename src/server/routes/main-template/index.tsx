@@ -12,7 +12,6 @@ interface IProps {
     data?: any;
 }
 
-const version = process.env.npm_package_version as string;
 const gtmKey = config.get('app.gtmKey');
 const gtmObserver = new GTM(gtmKey);
 
@@ -22,6 +21,14 @@ const criticalCSS: string = fs.readFileSync(
 );
 
 export class MainTemplate extends React.Component<IProps> {
+
+    protected readonly version: string;
+
+    protected constructor(props: IProps) {
+        super(props);
+
+        this.version = process.env.npm_package_version as string;
+    }
 
     protected renderApplication(): JSX.Element {
         const {children} = this.props;
@@ -42,23 +49,32 @@ export class MainTemplate extends React.Component<IProps> {
         }
     }
 
-    public render(): JSX.Element {
-        const {data = null} = this.props;
-
-        const frontApplication = this.renderApplication();
-        const helmet = Helmet.renderStatic();
-
+    protected renderStaticFiles(): JSX.Element {
         const mainCssAttribute = {
-            href: `/css/main.css?v=${version}`,
+            href: `/css/main.css?v=${this.version}`,
             async: false,
             rel: 'stylesheet',
             type: 'text/css'
         };
 
         const mainJsAttribute = {
-            src: `/main.bundle.js?v=${version}`,
+            src: `/main.bundle.js?v=${this.version}`,
             defer: true
         };
+
+        return (
+            <React.Fragment>
+                <script {...mainJsAttribute}/>
+                <link {...mainCssAttribute}/>
+            </React.Fragment>
+        );
+    };
+
+    public render(): JSX.Element {
+        const {data = null} = this.props;
+
+        const frontApplication = this.renderApplication();
+        const helmet = Helmet.renderStatic();
 
         return (
             <html lang="en">
@@ -70,9 +86,10 @@ export class MainTemplate extends React.Component<IProps> {
                 <meta name="format-detection" content="telephone=no"/>
                 {helmet.title.toComponent()}
                 {helmet.meta.toComponent()}
-                <link {...mainCssAttribute}/>
+
+                <OpenGraph/>
+
                 <style dangerouslySetInnerHTML={{__html: MainTemplate.getCriticalCss()}}/>
-                <script {...mainJsAttribute}/>
                 <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_DATA__=${serialize(data)};`}}
                         type="application/javascript"
                 />
@@ -80,13 +97,12 @@ export class MainTemplate extends React.Component<IProps> {
                 <link rel="chrome-webstore-item"
                       href="https://chrome.google.com/webstore/detail/boidgcdefidhoojfljngigkjffbodjmn"/>
 
-                <OpenGraph/>
-
                 {gtmObserver.renderHead()}
             </head>
             <body>
             {gtmObserver.renderBody()}
             {frontApplication}
+            {this.renderStaticFiles()}
             </body>
             </html>
         );

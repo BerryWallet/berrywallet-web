@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import './container.scss';
 
-export class Container extends React.Component<React.HTMLProps<{}>> {
+export class Container extends React.PureComponent<React.HTMLProps<{}>> {
     public render(): JSX.Element {
 
         const {className = null, children} = this.props;

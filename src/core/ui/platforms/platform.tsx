@@ -6,7 +6,7 @@ interface IPlatformProps extends React.HTMLProps<{}> {
     platform: IPlatformInfo;
 }
 
-export class Platform extends React.Component<IPlatformProps> {
+export class Platform extends React.PureComponent<IPlatformProps> {
     public render(): JSX.Element {
 
         const {className = null, platform} = this.props;
@@ -15,6 +15,7 @@ export class Platform extends React.Component<IPlatformProps> {
             className: cn('platform-item', className, {
                 '-inactive': !platform.url
             }),
+            title: platform.title,
             href: platform.url,
             target: '_blank'
         };

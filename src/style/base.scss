@@ -1,38 +1,11 @@
 @import "vendor/variables";
-@import "vendor/font";
 @import "vendor/normalize";
-
-html {
-}
-
-body {
-  @include font;
-  font-size: 16px;
-  color: $color-text-dark;
-  line-height: $base-line-height;
-  background-color: white;
-  min-height: 100vh;
-
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
+@import "vendor/text";
 
 .main-layout {
   background: $color-background;
   min-height: 100vh;
 }
 
-.link {
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
 
-@import "vendor/text";
+
