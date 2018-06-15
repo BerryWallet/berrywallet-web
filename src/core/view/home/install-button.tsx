@@ -1,9 +1,14 @@
 import React from 'react';
 import {ChromeColor, FirefoxColor} from '../../svg';
 
+import {sendAnaliticsEvent} from '../../../client/utils';
+
 interface IState {
     showButton: boolean;
 }
+
+const INSTALL_CHROME_KEY = 'INSTALL:CHROME';
+const INSTALL_FIREFOX_KEY = 'INSTALL:FIREFOX';
 
 export class InstallButton extends React.PureComponent<React.HTMLProps<{}>, IState> {
 
@@ -22,6 +27,8 @@ export class InstallButton extends React.PureComponent<React.HTMLProps<{}>, ISta
     }
 
     protected triggerInstallChrome = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+        sendAnaliticsEvent(INSTALL_CHROME_KEY, 'OPEN');
+
         if (!window.chrome) {
             return;
         }
@@ -34,21 +41,22 @@ export class InstallButton extends React.PureComponent<React.HTMLProps<{}>, ISta
         const url = event.currentTarget.href;
         event.preventDefault();
 
-        const onSuccess = (...success) => {
-            console.log(success);
+        const onSuccess = () => {
+            sendAnaliticsEvent(INSTALL_CHROME_KEY, 'SUCCESS');
         };
 
-        const onFailure = (...failur) => {
-            console.log(failur);
-            window.open(url, '_blank');
+        const onFailure = (message: string, label?: string) => {
+            sendAnaliticsEvent(INSTALL_CHROME_KEY, 'FAILURE', label);
         };
 
         window.chrome.webstore.install(url, onSuccess, onFailure);
     }
 
     protected triggerInstallFirefox = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        sendAnaliticsEvent(INSTALL_FIREFOX_KEY, 'OPEN');
+
         const itemUrl = 'https://addons.mozilla.org/firefox/downloads/file/939925/berrywallet-1.4.4-fx.xpi';
-        window.open(itemUrl, '_blank');
+        window.open(itemUrl);
 
         event.preventDefault();
     }

@@ -4,7 +4,7 @@
   padding: 0;
 
   @include to-width(768px) {
-    padding: 20px 0 20px 50px;
+    padding: 0 0 30px 50px;
   }
 
   @include from-width(768px) {
