@@ -20,7 +20,7 @@ export class ScreenSlideComponent extends React.Component<IProps> {
                 <img src={image} className="slide-sticky__image" title={imageTitle} alt={imageAlt}/>
                 <p className="slide-sticky__description">{description}</p>
 
-                <Platforms className="slide-sticky__platforms"/>
+                <Platforms className="slide-sticky__platforms" eventLabel="MAIN:APPLICATION"/>
             </div>
         );
     }

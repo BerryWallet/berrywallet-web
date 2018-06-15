@@ -49,7 +49,7 @@ export class NavModal extends React.Component<INavModalProps> {
                         </nav>
 
                         <div className="navigation-modal-footer">
-                            <Platforms/>
+                            <Platforms eventLabel="NAV:MODAL"/>
                             <Copywrite/>
                         </div>
                     </div>
