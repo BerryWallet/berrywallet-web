@@ -52,14 +52,15 @@ export class MainTemplate extends React.Component<IProps> {
     protected renderStaticFiles(): JSX.Element {
         const mainCssAttribute = {
             href: `/css/main.css?v=${this.version}`,
-            async: false,
+            async: true,
             rel: 'stylesheet',
             type: 'text/css'
         };
 
         const mainJsAttribute = {
             src: `/main.bundle.js?v=${this.version}`,
-            defer: true
+            defer: true,
+            async: true
         };
 
         return (
@@ -82,7 +83,7 @@ export class MainTemplate extends React.Component<IProps> {
                 <meta httpEquiv="Content-type" content="text/html; charset=utf-8"/>
                 <meta name="Content-language" content="en"/>
                 <meta name="viewport"
-                      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+                      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
                 <meta name="format-detection" content="telephone=no"/>
                 {helmet.title.toComponent()}
                 {helmet.meta.toComponent()}

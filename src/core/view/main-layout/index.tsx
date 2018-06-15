@@ -12,27 +12,36 @@ interface IProps {
 
 interface IState {
     isOpenIntro: boolean;
+    isBlockedScroll: boolean;
 }
 
 export class MainLayout extends React.Component<IProps, IState> {
 
     public state: IState = {
-        isOpenIntro: true
+        isOpenIntro: true,
+        isBlockedScroll: true
     };
 
     protected closeIntro = () => {
         this.setState({
             isOpenIntro: false
         });
+
+        setTimeout(
+            () => {
+                this.setState({isBlockedScroll: false});
+            },
+            600
+        );
     }
 
     public render(): JSX.Element {
 
-        const {isOpenIntro} = this.state;
+        const {isOpenIntro, isBlockedScroll} = this.state;
         const {activeSlide} = this.props;
 
         return (
-            <main className={cn('main-layout', isOpenIntro && '-is-blocked-scroll')}>
+            <main className={cn('main-layout', isBlockedScroll && '-is-blocked-scroll')}>
                 <IntroScreen isOpen={isOpenIntro} onCloseIntro={this.closeIntro}/>
                 <BackgroundLine/>
 
