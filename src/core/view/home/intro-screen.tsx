@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import {Swipeable} from 'react-touch';
 import {Topic} from '../../ui';
-import {BerrywalletDummy, Logo, InlineLogo} from '../../svg';
+import {Logo, InlineLogo} from '../../svg';
 
 // import './intro-screen.scss';
 
@@ -59,7 +59,8 @@ export class IntroScreen extends React.Component<IIntroProps> {
                                 />
 
                                 <div className="intro-content__screen">
-                                    <BerrywalletDummy/>
+                                    <img className="intro-content__screen-image"
+                                         src="/image/berrywallet-dummy_animated.svg"/>
                                 </div>
                             </div>
 
