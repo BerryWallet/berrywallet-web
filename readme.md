@@ -29,7 +29,7 @@ Install required packages
 ```bash
 $ yarn install
 ```
-
+berrywallet-dummy.svg
 ### 3. Build front
 Build front bundle and run webpack in watch mode
 ```bash

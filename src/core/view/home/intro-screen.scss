@@ -76,7 +76,7 @@
 
     &__screen {
       width: 50vw;
-      & svg {
+      &-image {
         display: block;
         margin: 0 auto;
         max-width: 600px;
@@ -110,7 +110,7 @@
       &__screen {
         width: 100vw;
 
-        & svg {
+        &-image {
           width: calc(100% - 40px);
         }
       }
