@@ -1,10 +1,12 @@
 import React from 'react';
-import {map, findKey} from 'lodash';
+import {map, findKey, debounce} from 'lodash';
 import PropTypes from 'prop-types';
 import {Helmet} from 'react-helmet';
 import {WindowIntersectionObserverService, IntersectionHandler} from '../../utils';
 import {MainLayout} from '../';
+import {sendAnaliticsEvent} from '../../../client/utils';
 import {homeSlides, IHomeSlide} from './home-slides';
+
 import './home.scss';
 
 interface IHomeProps {
@@ -20,6 +22,8 @@ export interface IHomeState {
 }
 
 export class Home extends React.PureComponent<IHomeProps, IHomeState> {
+
+    protected debounceHandleViewScreen;
 
     public static readonly contextTypes: PropTypes.ValidationMap<IHomeContext> = {
         windowIntersectionObserverService: PropTypes.object,
@@ -48,6 +52,13 @@ export class Home extends React.PureComponent<IHomeProps, IHomeState> {
                     .observe(this.state.childrenRefs[key]);
             }
         });
+
+        this.debounceHandleViewScreen = debounce(
+            (viewKey: string) => {
+                sendAnaliticsEvent('VIEW:SCREEN', viewKey);
+            },
+            500
+        );
     }
 
     public componentWillUnmount(): void {
@@ -58,6 +69,10 @@ export class Home extends React.PureComponent<IHomeProps, IHomeState> {
         const isIntersect = entries.some(
             (entry: IntersectionObserverEntry) => entry.isIntersecting || entry.intersectionRatio > 0
         );
+
+        if (isIntersect && this.debounceHandleViewScreen) {
+            this.debounceHandleViewScreen(i);
+        }
 
         this.setState({
             isChildrenIntersect: {
@@ -86,9 +101,7 @@ export class Home extends React.PureComponent<IHomeProps, IHomeState> {
         return (
             <MainLayout activeSlide={findKey(isChildrenIntersect)}>
                 <Helmet>
-                    <title>
-                        Berrywallet - PC virtual wallet for Bitcoin, Ethereum, Dash & Litecoin
-                    </title>
+                    <title>Berrywallet - PC virtual wallet for Bitcoin, Ethereum, Dash & Litecoin</title>
                     <meta name="description"
                           content="Safest blockchain cryptocurrency multi-wallet with a perfect balance between simplicity and mastery"/>
                     <meta property="og:title"

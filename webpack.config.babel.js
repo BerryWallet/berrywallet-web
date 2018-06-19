@@ -100,8 +100,6 @@ function getDefinePlugin(isBrowser = false) {
     });
 }
 
-console.log(path.resolve(__dirname, 'src/style'));
-
 const baseConfig = {
     resolve: {
         extensions: [".svg", ".ts", ".tsx", ".js", ".jsx", ".json"],
